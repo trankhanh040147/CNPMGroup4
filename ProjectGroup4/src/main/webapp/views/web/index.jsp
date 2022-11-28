@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <div class="content">
 	<div class="container-fluid">
 		<div class="row">
@@ -12,8 +14,8 @@
 							</div>
 							<div class="col-xs-7">
 								<div class="numbers">
-									<p>Capacity</p>
-									105GB
+									<p>Đề tài&nbsp;</p>
+									130
 								</div>
 							</div>
 						</div>
@@ -37,8 +39,8 @@
 							</div>
 							<div class="col-xs-7">
 								<div class="numbers">
-									<p>Revenue</p>
-									$1,345
+									<p>Sinh viên</p>
+									50
 								</div>
 							</div>
 						</div>
@@ -62,8 +64,8 @@
 							</div>
 							<div class="col-xs-7">
 								<div class="numbers">
-									<p>Errors</p>
-									23
+									<p>Giảng viên</p>
+									20
 								</div>
 							</div>
 						</div>
@@ -87,8 +89,8 @@
 							</div>
 							<div class="col-xs-7">
 								<div class="numbers">
-									<p>Followers</p>
-									+45
+									<p class="text-center">Trưởng bộ môn&nbsp;</p>
+									30
 								</div>
 							</div>
 						</div>
@@ -107,73 +109,30 @@
 			<div class="col-md-12">
 				<div class="card">
 					<div class="header">
-						<h4 class="title">Users Behavior</h4>
-						<p class="category">24 Hours performance</p>
+						<h4 class="title">Bảng thông báo</h4>
+						<p class="category">Các thông báo về đợt đăng ký, quy địng và
+							các công văn&nbsp; &nbsp;</p>
 					</div>
 					<div class="content">
-						<div id="chartHours" class="ct-chart"></div>
-						<div class="footer">
-							<div class="chart-legend">
-								<i class="fa fa-circle text-info"></i> Open <i
-									class="fa fa-circle text-danger"></i> Click <i
-									class="fa fa-circle text-warning"></i> Click Second Time
-							</div>
-							<hr>
-							<div class="stats">
-								<i class="ti-reload"></i> Updated 3 minutes ago
-							</div>
-						</div>
+						<table class="table table-hover">
+							<thead>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Thông báo đăng ký đề tài tiểu luận chuyên ngành khoá
+										2017</td>
+									<td><span class="badge badge-info">12/11/2022</span></td>
+								</tr>
+								<tr>
+									<td>Thông báo đăng ký đồ án tốt nghiệp khoá 2018</td>
+									<td><span class="badge badge-info">20/11/2022</span></td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-md-6">
-				<div class="card">
-					<div class="header">
-						<h4 class="title">Email Statistics</h4>
-						<p class="category">Last Campaign Performance</p>
-					</div>
-					<div class="content">
-						<div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
 
-						<div class="footer">
-							<div class="chart-legend">
-								<i class="fa fa-circle text-info"></i> Open <i
-									class="fa fa-circle text-danger"></i> Bounce <i
-									class="fa fa-circle text-warning"></i> Unsubscribe
-							</div>
-							<hr>
-							<div class="stats">
-								<i class="ti-timer"></i> Campaign sent 2 days ago
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="card ">
-					<div class="header">
-						<h4 class="title">2015 Sales</h4>
-						<p class="category">All products including Taxes</p>
-					</div>
-					<div class="content">
-						<div id="chartActivity" class="ct-chart"></div>
-
-						<div class="footer">
-							<div class="chart-legend">
-								<i class="fa fa-circle text-info"></i> Tesla Model S <i
-									class="fa fa-circle text-warning"></i> BMW 5 Series
-							</div>
-							<hr>
-							<div class="stats">
-								<i class="ti-check"></i> Data information certified
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 	</div>
 </div>
-
