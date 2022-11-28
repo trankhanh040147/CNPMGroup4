@@ -1,1 +1,0 @@
-Import this folder into Eclipse Enterprise version then run HomeController on a server
