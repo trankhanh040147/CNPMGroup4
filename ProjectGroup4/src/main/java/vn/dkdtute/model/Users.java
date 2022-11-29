@@ -7,6 +7,7 @@ public class Users {
 	private String phone;
 	private String avatar;
 	private String passwd;
+	private String major;
 	private byte roleid;
 
 	// Constructor
@@ -14,7 +15,7 @@ public class Users {
 		super();
 	}
 
-	public Users(String userid, String fullname, String email, String phone, String avatar, String passwd,
+	public Users(String userid, String fullname, String email, String phone, String avatar, String passwd, String major,
 			byte roleid) {
 		super();
 		this.userid = userid;
@@ -23,6 +24,7 @@ public class Users {
 		this.phone = phone;
 		this.avatar = avatar;
 		this.passwd = passwd;
+		this.major = major;
 		this.roleid = roleid;
 	}
 
@@ -81,6 +83,14 @@ public class Users {
 
 	public void setRoleid(byte roleid) {
 		this.roleid = roleid;
+	}
+
+	public String getMajor() {
+		return major;
+	}
+
+	public void setMajor(String major) {
+		this.major = major;
 	}
 
 }
