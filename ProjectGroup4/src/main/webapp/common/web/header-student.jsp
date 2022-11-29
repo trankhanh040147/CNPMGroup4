@@ -18,8 +18,7 @@
 
 		<div class="sidebar-wrapper">
 			<div class="logo">
-				<a href="http://www.creative-tim.com" class="simple-text"> Danh
-					mục </a>
+				<a href="http://www.creative-tim.com" class="simple-text"> Danh mục </a>
 			</div>
 			<ul class="nav">
 				<li class="active"><a href="${pageContext.request.contextPath}/home"> <i class="ti-panel"></i>
@@ -37,7 +36,26 @@
 						<p>Thông báo</p>
 					</a></li>
 			</ul>
-		</div>
+			
+			<div class="logo">
+				<a href="http://www.creative-tim.com" class="simple-text">Sinh Viên</a>
+			</div>
+			<ul class="nav">
+				<li><a href> <i class="ti-id-badge"></i>
+						<p>Quản lí tài khoản</p>
+					</a></li>
+
+				<li><a href=>
+						<i class="ti-notepad"></i>
+						<p>Đăng kí đề tài</p>
+					</a></li>
+					
+				<li><a href=> <i class="ti-archive"></i>
+						<p>Nộp đề tài</p>
+					</a></li>
+			</ul>
+			
+		</div>		
 	</div>
 
 	<div class="main-panel">

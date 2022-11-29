@@ -1,12 +1,12 @@
-package vn.dkdtute.service.impl;
+package vn.dkdtute.Service.Impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import vn.dkdtute.Connections.ConnectJDBC;
-import vn.dkdtute.service.IUsersService;
-import vn.dkdtute.model.Users;
+import vn.dkdtute.Service.IUsersService;
+import vn.dkdtute.Model.Users;
 
 public class UsersServiceImpl implements IUsersService {
 

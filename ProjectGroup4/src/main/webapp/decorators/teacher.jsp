@@ -48,7 +48,7 @@
 <body>
 <%-- 	<%@ include file="/common/web/header-user.jsp"%>
  --%>
- 	<jsp:include page="/common/web/header-student.jsp"></jsp:include>
+ 	<jsp:include page="/common/web/header-teacher.jsp"></jsp:include>
 	<!-- body -->
 	<dec:body />
 	<!-- body -->
@@ -93,7 +93,7 @@
 									.notify(
 											{
 												icon : 'ti-user',
-												message : "Welcome to <b>Student</b"
+												message : "Welcome to <b>Teacher</b>"
 
 											}, {
 												type : 'success',

@@ -42,7 +42,7 @@
 </head>
 
 <body>
-	<jsp:include page="/common/web/header-guest.jsp"></jsp:include>
+	<jsp:include page="/common/web/header-teacher.jsp"></jsp:include>
 
 	<!-- body -->
 	<dec:body />
@@ -87,9 +87,8 @@
 				$
 					.notify(
 						{
-							icon: 'ti-gift',
-							message: "Welcome to <b>Paper Dashboard</b> - a beautiful Bootstrap freebie for your next project."
-
+							icon: 'ti-user',
+							message: "<b>You not login </b>",
 						}, {
 						type: 'success',
 						timer: 4000

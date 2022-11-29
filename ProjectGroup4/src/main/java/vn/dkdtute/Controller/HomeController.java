@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class HomeController
  */
-@WebServlet(urlPatterns = { "/home"})
+@WebServlet(urlPatterns = { "/home", "/userInfo"})
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
    

@@ -1,6 +1,6 @@
-package vn.dkdtute.service;
+package vn.dkdtute.Service;
 
-import vn.dkdtute.model.Users;
+import vn.dkdtute.Model.Users;
 
 public interface IUsersService {
 	Users findByID(String userid);

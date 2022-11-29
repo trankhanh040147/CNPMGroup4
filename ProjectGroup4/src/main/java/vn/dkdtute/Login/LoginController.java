@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import vn.dkdtute.Model.Users;
+import vn.dkdtute.Service.IUsersService;
+import vn.dkdtute.Service.Impl.UsersServiceImpl;
 import vn.dkdtute.Util.Constant;
 
 /**
@@ -97,25 +100,22 @@ public class LoginController extends HttpServlet {
 		
 		//Gọi service và kiểm tra thông tin tài khoản, mật khẩu
 		
-//		AccountService service = new AccountServiceImpl();
-//		Account account = service.login(username, password);
-		
-		if(account!=null) {
-			//Nếu đăng nhập thành công --> Lưu tài khoản trên Session và Cookie
-			HttpSession session = req.getSession(true);
-			session.setAttribute("account", account);
-			
-			if(isRememberMe) {
-				saveRememberMe(resp, username);
-			}
-			
-			resp.sendRedirect(req.getContextPath()+"/waiting");
-		} else {
-			//Tài khoản hoặc mật khẩu không đúng --> báo lỗi sai tài khoản - mật khẩu
-			alertMsg = "Tài khoản hoặc mật khẩu không đúng";
-			req.setAttribute("alert", alertMsg);
-			req.getRequestDispatcher("/views/web/login.jsp").forward(req, resp);
-		}
+		IUsersService service = new UsersServiceImpl();
+		/*
+		 * Users account = service.login(username, password);
+		 */		
+		/*
+		 * if(account!=null) { //Nếu đăng nhập thành công --> Lưu tài khoản trên Session
+		 * và Cookie HttpSession session = req.getSession(true);
+		 * session.setAttribute("account", account);
+		 * 
+		 * if(isRememberMe) { saveRememberMe(resp, username); }
+		 * 
+		 * resp.sendRedirect(req.getContextPath()+"/waiting"); } else { //Tài khoản hoặc
+		 * mật khẩu không đúng --> báo lỗi sai tài khoản - mật khẩu alertMsg =
+		 * "Tài khoản hoặc mật khẩu không đúng"; req.setAttribute("alert", alertMsg);
+		 * req.getRequestDispatcher("/views/web/login.jsp").forward(req, resp); }
+		 */
 	}
 	
 	private void saveRememberMe(HttpServletResponse resp, String username) throws ServletException, IOException {		
