@@ -63,7 +63,10 @@ CREATE TABLE [dbo].[Users]
 	avatar varchar(218),
 	passwd varchar(15) not null,
 	major nvarchar(32),
-	roleid TINYINT NOT NULL --   1: Trưởng bộ môn ; 2: Giảng viên ; 3: Sinh viên ; 4: Admin
+	roleid TINYINT NOT NULL, --   1: Trưởng bộ môn ; 2: Giảng viên ; 3: Sinh viên ; 4: Admin
+	CONSTRAINT checkEmail CHECK (email LIKE '[a-z,0-9,_,-]%@[a-z]%.[a-z][a-z]%'),
+	CONSTRAINT checkPhone CHECK (phone NOT LIKE '%[^0-9]%'),
+	CONSTRAINT checkPasswd CHECK (passwd LIKE '%[0-9]%' OR passwd LIKE '%[A-Z]%' AND len(passwd) >= 6)
 );
 
 GO
