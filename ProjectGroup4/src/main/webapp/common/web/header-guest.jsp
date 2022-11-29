@@ -57,11 +57,10 @@
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">
 						<li>
-						<a href=<c:url value="/login"/>
+						 <a href=<c:url value="/login/check"/>
 							class="btn btn-success"><i class="fas bars"></i>Đăng nhập</a>
 						</li>
 					</ul>
-
 				</div>
 			</div>
 		</nav>

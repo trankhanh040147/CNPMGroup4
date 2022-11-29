@@ -48,22 +48,37 @@ USE QUANLYDETAI;
 
 -- Drop the table if it already exists
 
-IF OBJECT_ID('[dbo].[TaiKhoan]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[TaiKhoan];
+IF OBJECT_ID('[dbo].[Users]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Users];
 GO
 
 -- Create the table in the specified schema
 
-CREATE TABLE [dbo].[TaiKhoan]
+CREATE TABLE [dbo].[Users]
 (
-    MaTaiKhoan varchar(10) primary key,
-	HoTen nvarchar(32),
-	Email varchar(256) unique,
-	Phone varchar(11) unique,
-	Avatar varchar(218),
-	Passwd varchar(15) not null,
-	QuyenHan TINYINT NOT NULL --   1: Trưởng bộ môn ; 2: Giảng viên ; 3: Sinh viên ; 4: Admin
+    userid varchar(10) primary key,
+	username nvarchar(32),
+	email varchar(256) unique,
+	phone varchar(11) unique,
+	avatar varchar(218),
+	passwd varchar(15) not null,
+	roleid TINYINT NOT NULL --   1: Trưởng bộ môn ; 2: Giảng viên ; 3: Sinh viên ; 4: Admin
 );
+
+GO
+
+insert into dbo.Users values('20110123', N'Nguyễn Hoàng Lan', 'hoanglan2k2@mail.com', '0978978335','','20110123', 3)
+insert into dbo.Users values('20110279', N'Lê Hoài Lâm', 'lehoailam@gmail.com', '0356536245','','20110279', 3)
+insert into dbo.Users values('20110356', N'Trần Văn Khánh', 'tvkhanh@gmail.com', '0256536245','','20110356', 3)
+insert into dbo.Users values('20110004', N'Lê Hoài Đức', 'ducleh@gmail.com', '0356534777','','20110004', 3)
+insert into dbo.Users values('20110009', N'Ngô Thanh Ân', 'thanhanngo@gmail.com', '0976978204','','20110009', 3)
+insert into dbo.Users values('20110089', N'Nguyễn Tuyết Lan', 'tuyetlan@gmail.com', '0836978204','','20110089', 3)
+insert into dbo.Users values('20110247', N'Hoàng Văn Thái', 'thaihv@gmail.com', '0126978204','','20110247', 3)
+insert into dbo.Users values('GVCNTT0054', N'Quách Đình Huỳnh', 'huynhdq@gmail.com', '0967278204','','GVCNTT0054', 2)
+insert into dbo.Users values('GVCNTT0126', N'Trần Văn Đức', 'ductv@mail.com', '0237777838','','GVCNTT0126', 2)
+insert into dbo.Users values('GVCNTT0252', N'Nguyễn Hữu Nghĩa', 'nghianh@gmail.com', '0936532786','','GVCNTT0252', 2)
+insert into dbo.Users values('TBMCNPM012', N'Huỳnh Xuân Phụng', 'phunghx@gmail.com', '0236723596','','TBMCNPM012', 1)
+insert into dbo.Users values('TBMHTTT014', N'Nguyễn Thành Sơn', 'sonnt@gmail.com', '0935932786','','TBMHTTT014', 1)
 
 GO
 
@@ -178,20 +193,7 @@ CREATE TABLE [dbo].[ThanhVienNhom]
 
 GO
 
-insert into dbo.TaiKhoan values('20110123', N'Nguyễn Hoàng Lan', 'hoanglan2k2@mail.com', '0978978335','','20110123', 3)
-insert into dbo.TaiKhoan values('20110279', N'Lê Hoài Lâm', 'lehoailam@gmail.com', '0356536245','','20110279', 3)
-insert into dbo.TaiKhoan values('20110356', N'Trần Văn Khánh', 'tvkhanh@gmail.com', '0256536245','','20110356', 3)
-insert into dbo.TaiKhoan values('20110004', N'Lê Hoài Đức', 'ducleh@gmail.com', '0356534777','','20110004', 3)
-insert into dbo.TaiKhoan values('20110009', N'Ngô Thanh Ân', 'thanhanngo@gmail.com', '0976978204','','20110009', 3)
-insert into dbo.TaiKhoan values('20110089', N'Nguyễn Tuyết Lan', 'tuyetlan@gmail.com', '0836978204','','20110089', 3)
-insert into dbo.TaiKhoan values('20110247', N'Hoàng Văn Thái', 'thaihv@gmail.com', '0126978204','','20110247', 3)
-insert into dbo.TaiKhoan values('GVCNTT0054', N'Quách Đình Huỳnh', 'huynhdq@gmail.com', '0967278204','','GVCNTT0054', 2)
-insert into dbo.TaiKhoan values('GVCNTT0126', N'Trần Văn Đức', 'ductv@mail.com', '0237777838','','GVCNTT0126', 2)
-insert into dbo.TaiKhoan values('GVCNTT0252', N'Nguyễn Hữu Nghĩa', 'nghianh@gmail.com', '0936532786','','GVCNTT0252', 2)
-insert into dbo.TaiKhoan values('TBMCNPM012', N'Huỳnh Xuân Phụng', 'phunghx@gmail.com', '0236723596','','TBMCNPM012', 1)
-insert into dbo.TaiKhoan values('TBMHTTT014', N'Nguyễn Thành Sơn', 'sonnt@gmail.com', '0935932786','','TBMHTTT014', 1)
 
-GO
 
 insert into dbo.DeTai values('DT_CNPM_TLCN_2122_001', N'Xây dựng ứng dụng mạng xã hội sản phẩm trên Android', N'Công nghệ phần mềm', '', 1, NULL, NULL, NULL, NULL, 0)
 insert into dbo.DeTai values('DT_HTTT_TLCN_2122_034', N'Xây dựng ứng dụng IoT với NodeJS.', N'Hệ thống thông tin', 'Đã thi đậu các môn: Cơ sở dữ liệu, Hệ quản trị cơ sở dữ liệu', 1, NULL, NULL, NULL, NULL, 0)
