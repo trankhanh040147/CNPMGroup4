@@ -21,7 +21,7 @@ public class UsersServiceImpl implements IUsersService {
 			while (rs.next()) {
 				Users users = new Users();
 				users.setUserid(rs.getString("userid"));
-				users.setUsername(rs.getString("username"));
+				users.setFullname(rs.getString("fullname"));
 				users.setEmail(rs.getString("email"));
 				users.setPhone(rs.getString("phone"));
 				users.setAvatar(rs.getString("avatar"));
@@ -46,7 +46,7 @@ public class UsersServiceImpl implements IUsersService {
 			while (rs.next()) {
 				Users users = new Users();
 				users.setUserid(rs.getString("userid"));
-				users.setUsername(rs.getString("username"));
+				users.setFullname(rs.getString("fullname"));
 				users.setEmail(rs.getString("email"));
 				users.setPhone(rs.getString("phone"));
 				users.setAvatar(rs.getString("avatar"));
@@ -54,6 +54,34 @@ public class UsersServiceImpl implements IUsersService {
 				users.setRoleid(rs.getByte("roleid"));
 				return users;
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public Users login(String email, String passwd) {
+		String sql = "Select * From Users where email=?";
+		try {
+			Connection conn = new ConnectJDBC().getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, email);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Users users = new Users();
+				users.setUserid(rs.getString("userid"));
+				users.setFullname(rs.getString("fullname"));
+				users.setEmail(rs.getString("email"));
+				users.setPhone(rs.getString("phone"));
+				users.setAvatar(rs.getString("avatar"));
+				users.setPasswd(rs.getString("passwd"));
+				users.setRoleid(rs.getByte("roleid"));
+				if (passwd == users.getPasswd()) {
+					return users;
+				}
+			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

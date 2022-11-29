@@ -57,7 +57,7 @@ GO
 CREATE TABLE [dbo].[Users]
 (
     userid varchar(10) primary key,
-	username nvarchar(32),
+	fullname nvarchar(32),
 	email varchar(256) unique,
 	phone varchar(11) unique,
 	avatar varchar(218),
@@ -163,12 +163,12 @@ GO
 
 -- Create the table in the specified schema
 
-CREATE TABLE [dbo].[NhomSinhVien]
+CREATE TABLE [dbo].[StudentGroup]
 (
-    MaNhom varchar(25) primary key, 
-	MaNhomtruong varchar(10) references dbo.TaiKhoan(MaTaiKhoan),
-	maDeTai varchar(25) references dbo.DeTai(maDeTai),
-	SoThanhVien int not null,
+    groupid varchar(25) primary key, 
+	leaderid varchar(10) references dbo.TaiKhoan(MaTaiKhoan),
+	topicid varchar(25) references dbo.DeTai(maDeTai),
+	amount int not null,
 );
 
 GO
