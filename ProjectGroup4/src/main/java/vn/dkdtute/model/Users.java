@@ -2,7 +2,7 @@ package vn.dkdtute.model;
 
 public class Users {
 	private String userid;
-	private String username;
+	private String fullname;
 	private String email;
 	private String phone;
 	private String avatar;
@@ -14,11 +14,11 @@ public class Users {
 		super();
 	}
 
-	public Users(String userid, String username, String email, String phone, String avatar, String passwd,
+	public Users(String userid, String fullname, String email, String phone, String avatar, String passwd,
 			byte roleid) {
 		super();
 		this.userid = userid;
-		this.username = username;
+		this.fullname = fullname;
 		this.email = email;
 		this.phone = phone;
 		this.avatar = avatar;
@@ -26,7 +26,7 @@ public class Users {
 		this.roleid = roleid;
 	}
 
-	// Getters/Setters
+	// Getter/Setter
 	public String getUserid() {
 		return userid;
 	}
@@ -35,12 +35,12 @@ public class Users {
 		this.userid = userid;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getFullname() {
+		return fullname;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setFullname(String fullname) {
+		this.fullname = fullname;
 	}
 
 	public String getEmail() {
@@ -82,4 +82,5 @@ public class Users {
 	public void setRoleid(byte roleid) {
 		this.roleid = roleid;
 	}
+
 }
