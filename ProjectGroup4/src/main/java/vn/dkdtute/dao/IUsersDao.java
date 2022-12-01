@@ -1,8 +1,8 @@
-package vn.dkdtute.service;
+package vn.dkdtute.dao;
 
 import vn.dkdtute.model.Users;
 
-public interface IUsersService {
+public interface IUsersDao {
 	Users findByID(String userid);
 
 	Users findByEmail(String email);
