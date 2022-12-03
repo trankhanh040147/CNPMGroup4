@@ -1,0 +1,88 @@
+@charset "UTF-8";
+
+.alertw3s {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  margin-bottom: 20px;
+ }
+
+.close-alertw3s {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.close-alertw3s:hover {
+  color: black;
+}
+
+/* CSS avatar */
+.profilepic {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #111;
+  
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+  
+}
+
+.profilepic:hover .profilepic__content {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.profilepic:hover .profilepic__image {
+  opacity: .5;
+}
+
+.profilepic__image {
+  object-fit: cover;
+  opacity: 1;
+  transition: opacity .2s ease-in-out;
+}
+
+.profilepic__content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  opacity: 0;
+  transition: opacity .2s ease-in-out;
+  cursor: pointer;
+}
+
+.profilepic__icon {
+  color: white;
+  padding-bottom: 8px;
+  cursor: pointer;
+}
+
+.fas {
+  font-size: 20px;
+}
+
+.profilepic__text {
+  text-transform: uppercase;
+  font-size: 12px;
+  width: 50%;
+  text-align: center;
+}
+
+/* CSS avatar */
