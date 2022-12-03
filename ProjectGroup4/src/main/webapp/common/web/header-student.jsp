@@ -80,8 +80,11 @@
 <!-- 								<img src="" class="rounded-circle" style="width: 150px;" />
  -->
 								<div class="card-user">
+									<c:url value="/image?fname=${account.avatar}" var="imgUrl"></c:url>
 									<img class="avatar-topbar border-white"
-										src="${pageContext.request.contextPath}/assets/img/avatar/student.jpg"
+									src="${imgUrl}"
+										onerror="this.src='${pageContext.request.contextPath}/assets/img/avatar/student.jpg';this.onerror='';"
+										onclick="location.href='${pageContext.request.contextPath}/student/info'"
 										alt="..." />
 								</div>
                             </a>

@@ -20,6 +20,11 @@
 	name='viewport' />
 <meta name="viewport" content="width=device-width" />
 
+<!-- my css file -->
+<link href="${pageContext.request.contextPath}/assets/css/myCSS.css" rel="stylesheet"
+	type="text/css">
+<!-- my css file -->
+
 
 <!-- Bootstrap core CSS     -->
 <link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -29,7 +34,6 @@
 
 <!--  Paper Dashboard core CSS    -->
 <link href="${pageContext.request.contextPath}/assets/css/paper-dashboard.css" rel="stylesheet" />
-
 
 <!--  CSS for Demo Purpose, don't include it in your project     -->
 <link href="${pageContext.request.contextPath}/assets/css/demo.css" rel="stylesheet" />

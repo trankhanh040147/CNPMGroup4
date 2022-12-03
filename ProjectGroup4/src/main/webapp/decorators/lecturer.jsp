@@ -20,6 +20,8 @@
 	name='viewport' />
 <meta name="viewport" content="width=device-width" />
 
+<link href="${pageContext.request.contextPath}/assets/css/myCSS.css" rel="stylesheet"
+	type="text/css">
 
 <!-- Bootstrap core CSS     -->
 <link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet" />

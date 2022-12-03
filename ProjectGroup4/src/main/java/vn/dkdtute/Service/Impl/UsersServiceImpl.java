@@ -31,21 +31,21 @@ public class UsersServiceImpl implements IUsersService {
 
 	@Override
 	public void edit(Users newUserInfo) {
-//		Users oldUserInfo = userDao.findByID(newUserInfo.getUserid());
-//		oldUserInfo.setFullname(newUserInfo.getFullname());
-//		if (newUserInfo.getAvatar() != null) {
-//			// XOA ANH CU DI
-//			String fileName = oldUserInfo.getAvatar();
-//			final String dir = "D:\\uploadCNPM";
-//			File file = new File(dir + "/user" + fileName);
-//			if (file.exists()) {
-//				file.delete();
-//			}
-//			oldUserInfo.setAvatar(newUserInfo.getAvatar());
-//		}
-//		userDao.edit(oldUserInfo);
+		Users oldUserInfo = userDao.findByID(newUserInfo.getUserid());
+		oldUserInfo.setFullname(newUserInfo.getFullname());
+		if (newUserInfo.getAvatar() != null) {
+			// XOA ANH CU DI
+			String fileName = oldUserInfo.getAvatar();
+			final String dir = "D:\\uploadCNPM";
+			File file = new File(dir + "/user" + fileName);
+			if (file.exists()) {
+				file.delete();
+			}
+			oldUserInfo.setAvatar(newUserInfo.getAvatar());
+		}
+		userDao.edit(oldUserInfo);
 		
-		userDao.edit(newUserInfo);
+//		userDao.edit(newUserInfo);
 	}
 
 }

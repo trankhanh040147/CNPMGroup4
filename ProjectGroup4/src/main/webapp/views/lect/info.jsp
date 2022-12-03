@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ import file="/common/taglib.jsp" %>
+<%@ include file="/common/taglib.jsp" %>
 
 <!-- Thông báo các các lỗi dăng nhập sau khi đã submit đăng nhập -->
 <c:if test="${alert!=null}">
@@ -17,8 +17,12 @@
 					</div>
 					<div class="content">
 						<div class="author">
+						
 							<img class="avatar border-white"
-								src="${pageContext.request.contextPath}/assets/img/avatar/lecturer.jpg" alt="..." />
+								src="${account.avatar}"
+										onerror="this.src='${pageContext.request.contextPath}/assets/img/avatar/lecturer.jpg';this.onerror='';"
+										 alt="Ảnh đại diện" />
+										 
 							<h4 class="title">
 								${account.fullname}<br /> <a href="#"><small>${account.email}</small></a>
 							</h4>
@@ -128,7 +132,7 @@
 									<div class="form-group">
 										<label>Họ và tên</label> <input type="text"
 											class="form-control border-input" placeholder="Nguyễn Văn A"
-											value="${account.fullname}">
+											value="${account.fullname}" name="fullName">
 									</div>
 								</div>
 
@@ -136,7 +140,7 @@
 									<div class="form-group">
 										<label for="exampleInputEmail1">Chuyên ngành</label> <input
 											type="text" list="genders" class="form-control border-input"
-											placeholder="Chuyên ngành" value="${account.major}" />
+											placeholder="Chuyên ngành" value="${account.major}" name="major"/>
 										<datalist id="genders">
 											<option>Công Nghệ Phần Mềm</option>
 											<option>Hệ Thống Thông Tin</option>
@@ -151,21 +155,21 @@
 									<div class="form-group">
 										<label for="exampleInputEmail1">Địa chỉ Email</label> <input
 											type="email" class="form-control border-input"
-											placeholder="@gmail.com" value="${account.email}">
+											placeholder="@gmail.com" value="${account.email}" name="email">
 									</div>
 								</div>
 								<div class="col-md-5">
 									<div class="form-group">
 										<label>Số điện thoại</label> <input type="text"
 											class="form-control border-input"
-											placeholder="+84 xx.xxx.xxxx" value="${account.phone}">
+											placeholder="+84 xx.xxx.xxxx" value="${account.phone}" name="phone">
 									</div>
 								</div>
 								
 							</div>
 
 							<div class="text-center">
-								<button onclick="form.action='';"
+								<button onclick="form.action='updInfo';"
 								type="submit" class="btn btn-info btn-fill btn-wd"
 								>Cập nhật thông tin</button>
 							</div>
@@ -186,7 +190,7 @@
 								<div class="col-md-12">
 									<div class="form-group">
 										<label>Mật khẩu cũ</label> <input type="password"
-											class="form-control border-input" placeholder="" value="">
+											class="form-control border-input" placeholder="" value="" name="oldPass">
 									</div>
 								</div>
 							</div>
@@ -194,7 +198,7 @@
 								<div class="col-md-12">
 									<div class="form-group">
 										<label>Mật khẩu mới</label> <input type="password"
-											class="form-control border-input" placeholder="" value="">
+											class="form-control border-input" placeholder="" value="" name="newPass">
 									</div>
 								</div>
 							</div>
@@ -202,13 +206,13 @@
 								<div class="col-md-12">
 									<div class="form-group">
 										<label>Nhập lại mật khẩu mới</label> <input type="password"
-											class="form-control border-input" placeholder="" value="">
+											class="form-control border-input" placeholder="" value="" name="newPassConfirm">
 									</div>
 								</div>
 							</div>
 							<div class="text-center">
 								<button type="submit" class="btn btn-info btn-fill btn-wd"
-								onclick="location.href='${pageContext.request.contextPath}/info/update/password'">Cập
+								onclick="form.action='updPass';">Cập
 									nhật mật khẩu</button>
 							</div>
 							<div class="clearfix"></div>

@@ -90,7 +90,7 @@
 							<div class="col-xs-7">
 								<div class="numbers">
 									<p class="text-center">Trưởng bộ môn&nbsp;</p>
-									30
+									5
 								</div>
 							</div>
 						</div>

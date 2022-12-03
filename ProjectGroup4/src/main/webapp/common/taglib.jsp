@@ -2,6 +2,8 @@
 ${pageContext.request.contextPath}
 --> webapp | DKDTUTE
 
+onclick="location.href='${pageContext.request.contextPath}/home'"
+
 req.getContextPath()
 --> http://localhost:8080/DKDTUTE
 --%>

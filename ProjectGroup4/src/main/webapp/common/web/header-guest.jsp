@@ -18,11 +18,11 @@
 
 		<div class="sidebar-wrapper">
 			<div class="logo">
-				<a href="http://www.creative-tim.com" class="simple-text"> Danh
+				<a href="https://github.com/trankhanh040147/CNPMGroup4" class="simple-text"> Danh
 					mục </a>
 			</div>
 			<ul class="nav">
-				<li class="active"><a href="${pageContext.request.contextPath}/home"> <i class="ti-panel"></i>
+				<li class="active"><a href="${pageContext.request.contextPath}/guest/home"> <i class="ti-panel"></i>
 						<p>Trang chủ</p>
 					</a></li>
 
