@@ -1,4 +1,4 @@
-package vn.dkdtute.model;
+package vn.dkdtute.Model;
 
 public class Users {
 	private String userid;

@@ -7,12 +7,29 @@ import vn.dkdtute.Connections.ConnectJDBC;
 
 public class ConnectJDBC {
 
+	//Connection của Ân
 	private final String serverName = "LAPTOP-EVKJEPF2";
 	private final String dbName = "QUANLYDETAI";
 	private final String portNumber = "1433";
-	private final String instance = "SQLEXPRESS";// MSSQLSERVER LEAVE THIS ONE EMPTY IF YOUR SQL IS A SINGLE INSTANCE
+	private final String instance = "SQLEXPRESS";
 	private final String userID = "sa";
 	private final String password = "123456";
+	
+	//Connection của Khánh
+//	private final String serverName = "localhost";
+//	private final String dbName = "QUANLYDETAI";
+//	private final String portNumber = "1433";
+//	private final String instance = "";
+//	private final String userID = "sa";
+//	private final String password = "040147";
+	
+	//Connection của Đức
+//	private final String serverName = "LAPTOP-EVKJEPF2";
+//	private final String dbName = "QUANLYDETAI";
+//	private final String portNumber = "1433";
+//	private final String instance = "SQLEXPRESS";
+//	private final String userID = "sa";
+//	private final String password = "123456";
 
 	public Connection getConnection() throws Exception {
 		String url = "jdbc:sqlserver://" + serverName + "\\" + instance + ";databaseName=" + dbName;

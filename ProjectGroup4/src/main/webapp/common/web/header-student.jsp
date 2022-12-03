@@ -18,11 +18,10 @@
 
 		<div class="sidebar-wrapper">
 			<div class="logo">
-				<a href="http://www.creative-tim.com" class="simple-text"> Danh
-					mục </a>
+				<a href="http://www.creative-tim.com" class="simple-text"> Danh mục </a>
 			</div>
 			<ul class="nav">
-				<li class="active"><a href="${pageContext.request.contextPath}/guest/home"> <i class="ti-panel"></i>
+				<li class="active"><a href="${pageContext.request.contextPath}/student/home"> <i class="ti-panel"></i>
 						<p>Trang chủ</p>
 					</a></li>
 
@@ -37,7 +36,26 @@
 						<p>Thông báo</p>
 					</a></li>
 			</ul>
-		</div>
+			
+			<div class="logo">
+				<a href="https://github.com/trankhanh040147/CNPMGroup4" class="simple-text">Sinh Viên</a>
+			</div>
+			<ul class="nav">
+				<li><a href="${pageContext.request.contextPath}/student/info"> <i class="ti-id-badge"></i>
+						<p>Quản lí tài khoản</p>
+					</a></li>
+
+				<li><a href=>
+						<i class="ti-notepad"></i>
+						<p>Đăng kí đề tài</p>
+					</a></li>
+					
+				<li><a href=> <i class="ti-archive"></i>
+						<p>Nộp đề tài</p>
+					</a></li>
+			</ul>
+			
+		</div>		
 	</div>
 
 	<div class="main-panel">
@@ -51,15 +69,28 @@
 					</button>
 					<a class="navbar-brand"
 						href="${pageContext.request.contextPath}/home">
-						 <i class="fas fa-home"></i> Home
+						 <i class="fa fa-home"></i> Home
 					</a>
 				</div>
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">
 						<li>
-						 <a href=<c:url value="/login"/>
-							class="btn btn-success"><i class="fas bars"></i>Đăng nhập</a>
+                            <a href="#">
+								<!-- <i class="ti-settings"></i> -->
+<!-- 								<img src="" class="rounded-circle" style="width: 150px;" />
+ -->
+								<div class="card-user">
+									<img class="avatar-topbar border-white"
+										src="${pageContext.request.contextPath}/assets/img/avatar/student.jpg"
+										alt="..." />
+								</div>
+                            </a>
+                        </li>
+						<li>
+						  <a href=<c:url value="/logout"/>
+							class="btn btn-danger"><i class="fas bars"></i>Đăng xuất</a> 
 						</li>
+						
 					</ul>
 				</div>
 			</div>

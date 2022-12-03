@@ -1,3 +1,11 @@
+<%-- 
+${pageContext.request.contextPath}
+--> webapp | DKDTUTE
+
+req.getContextPath()
+--> http://localhost:8080/DKDTUTE
+--%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 
     pageEncoding="UTF-8"%>

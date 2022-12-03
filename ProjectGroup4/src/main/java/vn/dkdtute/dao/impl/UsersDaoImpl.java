@@ -1,14 +1,15 @@
-package vn.dkdtute.dao.impl;
+package vn.dkdtute.Dao.Impl;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import vn.dkdtute.Connections.ConnectJDBC;
-import vn.dkdtute.dao.IUsersDao;
-import vn.dkdtute.model.Users;
+import vn.dkdtute.Dao.IUsersDao;
+import vn.dkdtute.Model.Users;
 
-public class UsersDaoImpl extends ConnectJDBC implements IUsersDao {
+public class UsersDaoImpl implements IUsersDao {
 
 	@Override
 	public Users findByID(String userid) {
@@ -81,9 +82,10 @@ public class UsersDaoImpl extends ConnectJDBC implements IUsersDao {
 				users.setPasswd(rs.getString("passwd"));
 				users.setMajor(rs.getString("major"));
 				users.setRoleid(rs.getByte("roleid"));
-				if (passwd == users.getPasswd()) {
-					return users;
-				}
+				return users;
+//				if (passwd == users.getPasswd()) {
+//					return users;
+//				}
 			}
 
 		} catch (Exception e) {
@@ -93,22 +95,23 @@ public class UsersDaoImpl extends ConnectJDBC implements IUsersDao {
 	}
 
 	@Override
-	public void edit(Users user) {
+	public void edit(Users newUserInfo) {
 		String sql = "Update Users Set fullname=?, email=?, phone=?, avatar=?, passwd=?, major=?, roleid=? WHERE userid=?";
 		try {
-			Connection conn = super.getConnection();
+			Connection conn = new ConnectJDBC().getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, user.getFullname());
-			ps.setString(2, user.getEmail());
-			ps.setString(3, user.getPhone());
-			ps.setString(4, user.getAvatar());
-			ps.setString(5, user.getPasswd());
-			ps.setString(6, user.getMajor());
-			ps.setByte(7, user.getRoleid());
-			ps.setString(8, user.getUserid());
-			ps.executeUpdate();
+			ps.setString(1, newUserInfo.getFullname());
+			ps.setString(2, newUserInfo.getEmail());
+			ps.setString(3, newUserInfo.getPhone());
+			ps.setString(4, newUserInfo.getAvatar());
+			ps.setString(5, newUserInfo.getPasswd());
+			ps.setString(6, newUserInfo.getMajor());
+			ps.setByte(7, newUserInfo.getRoleid());
+			ps.setString(8, newUserInfo.getUserid());
+			ps.executeQuery();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+
 }

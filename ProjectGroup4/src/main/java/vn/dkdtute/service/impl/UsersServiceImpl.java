@@ -1,10 +1,15 @@
-package vn.dkdtute.service.impl;
+package vn.dkdtute.Service.Impl;
 
 import java.io.File;
-import vn.dkdtute.dao.IUsersDao;
-import vn.dkdtute.dao.impl.UsersDaoImpl;
-import vn.dkdtute.service.IUsersService;
-import vn.dkdtute.model.Users;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import vn.dkdtute.Connections.ConnectJDBC;
+import vn.dkdtute.Dao.IUsersDao;
+import vn.dkdtute.Dao.Impl.UsersDaoImpl;
+import vn.dkdtute.Service.IUsersService;
+import vn.dkdtute.Model.Users;
 
 public class UsersServiceImpl implements IUsersService {
 	IUsersDao userDao = new UsersDaoImpl();
@@ -26,18 +31,21 @@ public class UsersServiceImpl implements IUsersService {
 
 	@Override
 	public void edit(Users newUserInfo) {
-		Users oldUserInfo = userDao.findByID(newUserInfo.getUserid());
-		oldUserInfo.setFullname(newUserInfo.getFullname());
-		if (newUserInfo.getAvatar() != null) {
-			// XOA ANH CU DI
-			String fileName = oldUserInfo.getAvatar();
-			final String dir = "D:\\uploadCNPM";
-			File file = new File(dir + "/user" + fileName);
-			if (file.exists()) {
-				file.delete();
-			}
-			oldUserInfo.setAvatar(newUserInfo.getAvatar());
-		}
-		userDao.edit(oldUserInfo);
+//		Users oldUserInfo = userDao.findByID(newUserInfo.getUserid());
+//		oldUserInfo.setFullname(newUserInfo.getFullname());
+//		if (newUserInfo.getAvatar() != null) {
+//			// XOA ANH CU DI
+//			String fileName = oldUserInfo.getAvatar();
+//			final String dir = "D:\\uploadCNPM";
+//			File file = new File(dir + "/user" + fileName);
+//			if (file.exists()) {
+//				file.delete();
+//			}
+//			oldUserInfo.setAvatar(newUserInfo.getAvatar());
+//		}
+//		userDao.edit(oldUserInfo);
+		
+		userDao.edit(newUserInfo);
 	}
+
 }
