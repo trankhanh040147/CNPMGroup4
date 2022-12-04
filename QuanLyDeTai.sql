@@ -78,15 +78,60 @@ insert into dbo.Users values('20110004', N'Lê Hoài Đức', 'ducleh@gmail.com'
 insert into dbo.Users values('20110009', N'Ngô Thanh Ân', 'thanhanngo@gmail.com', '0976978204',NULL,'20110009', NULL, 3)
 insert into dbo.Users values('20110089', N'Nguyễn Tuyết Lan', 'tuyetlan@gmail.com', '0836978204',NULL,'20110089', NULL, 3)
 insert into dbo.Users values('20110247', N'Hoàng Văn Thái', 'thaihv@gmail.com', '0126978204',NULL,'20110247', NULL, 3)
-insert into dbo.Users values('GVCNTT0054', N'Quách Đình Huỳnh', 'huynhdq@gmail.com', '0967278204',NULL,'GVCNTT0054', N'Hệ thống thông tin', 2)
-insert into dbo.Users values('GVCNTT0126', N'Trần Văn Đức', 'ductv@mail.com', '0237777838',NULL,'GVCNTT0126', N'Trí tuệ nhân tạo', 2)
-insert into dbo.Users values('GVCNTT0252', N'Nguyễn Hữu Nghĩa', 'nghianh@gmail.com', '0936532786',NULL,'GVCNTT0252', N'Công nghệ phần mềm', 2)
-insert into dbo.Users values('TBMCNPM012', N'Huỳnh Xuân Phụng', 'phunghx@gmail.com', '0236723596',NULL,'TBMCNPM012', N'Công nghệ phần mềm', 1)
-insert into dbo.Users values('TBMHTTT014', N'Nguyễn Thành Sơn', 'sonnt@gmail.com', '0935932786',NULL,'TBMHTTT014', N'Hệ thống thông tin', 1)
+insert into dbo.Users values('SPK00054', N'Quách Đình Huỳnh', 'huynhdq@gmail.com', '0967278204',NULL,'SPK00054', N'Hệ thống thông tin', 2)
+insert into dbo.Users values('SPK00126', N'Trần Văn Đức', 'ductv@mail.com', '0237777838',NULL,'SPK00126', N'Công nghệ phần mềm', 2)
+insert into dbo.Users values('SPK00252', N'Nguyễn Hữu Nghĩa', 'nghianh@gmail.com', '0936532786',NULL,'SPK00252', N'Công nghệ phần mềm', 2)
+insert into dbo.Users values('SPK00122', N'Huỳnh Xuân Phụng', 'phunghx@gmail.com', '0236723596',NULL,'SPK00122', N'Công nghệ phần mềm', 1)
+insert into dbo.Users values('SPK00014', N'Nguyễn Thành Sơn', 'sonnt@gmail.com', '0935932786',NULL,'SPK00014', N'Hệ thống thông tin', 1)
 
 GO
 
 
+-- Create a new table called '[Topic]' in schema '[dbo]'
+
+-- Drop the table if it already exists
+
+IF OBJECT_ID('[dbo].[Topic]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Topic];
+
+GO
+
+-- Create the table in the specified schema
+
+CREATE TABLE [dbo].[Topic]
+(
+    topicid int identity(1,1) primary key,
+	topicname nvarchar(256) not null,
+	topictarget nvarchar(256),
+	request nvarchar(256),
+	product nvarchar(256),
+	numofstudent int not null,
+	major nvarchar(64) not null, -- Công nghệ phần mềm, Hệ thống thông tin, Mạng máy tính
+	topictype nvarchar(64) NOT NULL, -- Tiểu luận chuyên ngành, Đề tài tốt nghiệp
+	topicstatus BIT DEFAULT 0 not null, -- Mặc định là chưa được duyệt
+	schoolyear int not null,
+	leaderid varchar(10) references dbo.Users(userid),
+	memberid varchar(10) references dbo.Users(userid),
+	instructorid varchar(10) references dbo.Users(userid) not null,
+	criticalid varchar(10) references dbo.Users(userid),
+	topicscore int
+);
+
+GO
+
+insert into dbo.Topic values(N'Xây dựng ứng dụng mạng xã hội sản phẩm trên Android', NULL, NULL, NULL, 0, N'Công nghệ phần mềm', N'Tiểu luận chuyên ngành', DEFAULT, 2020, NULL, NULL, 'SPK00126', NULL, NULL)
+insert into dbo.Topic values(N'Xây dựng ứng dụng IoT với NodeJS', NULL, N'Đã thi đậu các môn: Cơ sở dữ liệu, Hệ quản trị cơ sở dữ liệu', NULL, 0, N'Hệ thống thông tin', N'Tiểu luận chuyên ngành', DEFAULT, 2020, NULL, NULL, 'SPK00054', NULL, NULL)
+insert into dbo.Topic values(N'Tìm hiểu công nghệ MonoGame và xây dựng game minh họa', N'MonoGame', N'Học Lập trình Web, Các CNPM Mới', N'Windows game', 0, N'Công nghệ phần mềm', N'Tiểu luận chuyên ngành', DEFAULT, 2018, NULL, NULL, 'SPK00054', NULL, NULL)
+insert into dbo.Topic values(N'B', NULL, N'Đã thi đậu các môn: Cơ sở dữ liệu, Hệ quản trị cơ sở dữ liệu', NULL, 0, N'Hệ thống thông tin', N'Khóa luận tốt nghiệp', DEFAULT, 2018, NULL, NULL, 'SPK00054', NULL, NULL)
+insert into dbo.Topic values(N'C', NULL, N'Đã thi đậu các môn: Cơ sở dữ liệu, Hệ quản trị cơ sở dữ liệu', NULL, 0, N'Hệ thống thông tin', N'Tiểu luận chuyên ngành', DEFAULT, 2020, NULL, NULL, 'SPK00054', NULL, NULL)
+insert into dbo.Topic values(N'D', NULL, N'Đã thi đậu các môn: Cơ sở dữ liệu, Hệ quản trị cơ sở dữ liệu', NULL, 0, N'Hệ thống thông tin', N'Tiểu luận chuyên ngành', DEFAULT, 2020, NULL, NULL, 'SPK00054', NULL, NULL)
+insert into dbo.Topic values(N'E', NULL, N'Đã thi đậu các môn: Cơ sở dữ liệu, Hệ quản trị cơ sở dữ liệu', NULL, 0, N'Hệ thống thông tin', N'Khóa luận tốt nghiệp', DEFAULT, 2020, NULL, NULL, 'SPK00054', NULL, NULL)
+insert into dbo.Topic values(N'F', NULL, N'Đã thi đậu các môn: Cơ sở dữ liệu, Hệ quản trị cơ sở dữ liệu', NULL, 0, N'Hệ thống thông tin', N'Khóa luận tốt nghiệp', DEFAULT, 2020, NULL, NULL, 'SPK00054', NULL, NULL)
+insert into dbo.Topic values(N'G', NULL, N'Đã thi đậu các môn: Cơ sở dữ liệu, Hệ quản trị cơ sở dữ liệu', NULL, 0, N'Hệ thống thông tin', N'Tiểu luận chuyên ngành', DEFAULT, 2020, NULL, NULL, 'SPK00054', NULL, NULL)
+insert into dbo.Topic values(N'H', NULL, N'Đã thi đậu các môn: Cơ sở dữ liệu, Hệ quản trị cơ sở dữ liệu', NULL, 0, N'Hệ thống thông tin', N'Khóa luận tốt nghiệp', DEFAULT, 2018, NULL, NULL, 'SPK00054', NULL, NULL)
+insert into dbo.Topic values(N'I', NULL, N'Đã thi đậu các môn: Cơ sở dữ liệu, Hệ quản trị cơ sở dữ liệu', NULL, 0, N'Hệ thống thông tin', N'Tiểu luận chuyên ngành', DEFAULT, 2018, NULL, NULL, 'SPK00054', NULL, NULL)
+
+GO
 -- Create a new table called '[CounterCommittee' in schema '[dbo]'
 
 -- Drop the table if it already exists
@@ -141,37 +186,6 @@ insert into dbo.RegistrationPeriod values('DK_KLTN_2122_D2', 2, '2022-01-21', NU
 
 GO
 
--- Create a new table called '[Topic]' in schema '[dbo]'
-
--- Drop the table if it already exists
-
-IF OBJECT_ID('[dbo].[Topic]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Topic];
-
-GO
-
--- Create the table in the specified schema
-
-CREATE TABLE [dbo].[Topic]
-(
-    topicid varchar(25) primary key,
-	topicname nvarchar(256) not null,
-	major nvarchar(32) not null,
-	request nvarchar(100),
-	topictype TINYINT NOT NULL, -- 1: Tiểu luận chuyên ngành ; 2: Đề tài tốt nghiệp
-	regperid varchar(25) references dbo.RegistrationPeriod(id),
-	countcomid varchar(25) references dbo.CounterCommittee(id),
-	instructorsid varchar(10) references dbo.Users(userid),
-	crilecturerid varchar(10) references dbo.Users(userid),
-	tpstatus BIT NOT NULL DEFAULT 0, --Mặc định là chưa được duyệt
-);
-
-GO
-
-insert into dbo.Topic values('DT_CNPM_TLCN_2122_001', N'Xây dựng ứng dụng mạng xã hội sản phẩm trên Android', N'Công nghệ phần mềm', NULL, 1, NULL, NULL, NULL, NULL, 0)
-insert into dbo.Topic values('DT_HTTT_TLCN_2122_034', N'Xây dựng ứng dụng IoT với NodeJS.', N'Hệ thống thông tin', 'Đã thi đậu các môn: Cơ sở dữ liệu, Hệ quản trị cơ sở dữ liệu', 1, NULL, NULL, NULL, NULL, 0)
-
-GO
 -- Create a new table called '[StudentGroup]' in schema '[dbo]'
 
 -- Drop the table if it already exists
