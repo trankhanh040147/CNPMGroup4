@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class HomeController
  */
-@WebServlet(urlPatterns = {"/guest/home", "/student/home", "/lect/home", "/head-lect/home", "/admin/home" })
+@WebServlet(urlPatterns = {"/guest/home", "/student/home", "/lect/home", "/head-lect/home", "/admin/home", "/guest/TB_DATK_K18" })
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
    
@@ -34,6 +34,12 @@ public class HomeController extends HttpServlet {
 	    else if (url.contains("lect/home")) {
 	    	req.getRequestDispatcher("/views/web/index.jsp").forward(req, resp);
 	    }
+	    
+	    //TB_DATK_K18 
+	    else if (url.contains("guest/TB_DATK_K18")) {
+	    	req.getRequestDispatcher("/views/web/user.jsp").forward(req, resp);
+	    }
+	    
 
 	}
 
