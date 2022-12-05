@@ -12,21 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class HomeController
  */
-@WebServlet(urlPatterns = {"/guest/home", "/student/home", "/lect/home", "/head-lect/home", "/admin/home" })
+@WebServlet(urlPatterns = {"", "/guest/home", "/student/home", "/lect/home", "/head-lect/home", "/admin/home" })
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
    
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	    resp.setContentType("text/html; charset=UTF-8");
 		String url = req.getRequestURL().toString(); 
-		
-		//Trang chủ cho khách
-	    if (url.contains("guest/home")) {
-			req.getRequestDispatcher("/views/web/index.jsp").forward(req, resp);
-		}
 
 	    //Trang chủ cho sinh viên
-	    else if (url.contains("student/home")) {
+	    if (url.contains("student/home")) {
 			req.getRequestDispatcher("/views/web/index.jsp").forward(req, resp);
 		}
 	    
@@ -34,6 +29,10 @@ public class HomeController extends HttpServlet {
 	    else if (url.contains("lect/home")) {
 	    	req.getRequestDispatcher("/views/web/index.jsp").forward(req, resp);
 	    }
+	  //Trang chủ cho khách (bất kỳ url nào khác)
+	    else {
+			req.getRequestDispatcher("/views/web/index.jsp").forward(req, resp);
+		}
 
 	}
 

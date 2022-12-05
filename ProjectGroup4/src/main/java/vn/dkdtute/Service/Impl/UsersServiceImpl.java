@@ -9,6 +9,7 @@ import vn.dkdtute.Connections.ConnectJDBC;
 import vn.dkdtute.Dao.IUsersDao;
 import vn.dkdtute.Dao.Impl.UsersDaoImpl;
 import vn.dkdtute.Service.IUsersService;
+import vn.dkdtute.Util.Constant;
 import vn.dkdtute.Model.Users;
 
 public class UsersServiceImpl implements IUsersService {
@@ -36,8 +37,8 @@ public class UsersServiceImpl implements IUsersService {
 		if (newUserInfo.getAvatar() != null) {
 			// XOA ANH CU DI
 			String fileName = oldUserInfo.getAvatar();
-			final String dir = "D:\\uploadCNPM";
-			File file = new File(dir + "/user" + fileName);
+			final String dir = Constant.DIR;
+			File file = new File(dir + "/avatar" + fileName);
 			if (file.exists()) {
 				file.delete();
 			}
