@@ -12,10 +12,15 @@
 <c:if test="${alert!=null}">
 	<h3 class="alert alertdanger">${alert}</h3>
 </c:if>
+
+<c:url value="/student/updInfo" var="editInfo "></c:url>
+<c:url value="/student/updPass" var="editPass "></c:url>
+
 	
 <div class="content">
 	<div class="container-fluid">
 		<div class="row">
+			<form enctype="multipart/form-data" method ="post" role="form" action="${editInfo}}">
 			<div class="col-lg-4 col-md-5">
 				<div class="card card-user">
 					<div class="image">
@@ -162,7 +167,7 @@
 						<h4 class="title">Chỉnh sửa thông tin</h4>
 					</div>
 					<div class="content">
-						<form enctype="multipart/form-data">
+<!-- 						<form enctype="multipart/form-data"> -->
 							<div class="row">
 								<div class="col-md-4">
 									<div class="form-group">
@@ -216,11 +221,14 @@
 									nhật thông tin</button>
 							</div>
 							<div class="clearfix"></div>
-						</form>
-					</div>
+<!-- 							</form>
+ -->					</div>
 				</div>
 			</div>
-
+			
+			</form>
+			
+			<form action="${editPass}" method="post">
 			<div class="col-lg-8 col-md-7">
 				<div class="card">
 					<div class="header">
@@ -258,11 +266,10 @@
 									nhật mật khẩu</button>
 							</div>
 							<div class="clearfix"></div>
-						</form>
 					</div>
 				</div>
 			</div>
-
+			</form>
 		</div>
 	</div>
 </div>

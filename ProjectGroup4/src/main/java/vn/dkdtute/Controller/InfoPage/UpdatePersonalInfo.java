@@ -32,7 +32,7 @@ public class UpdatePersonalInfo extends HttpServlet {
 	
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession(false);
 		
 		Users users = (Users) session.getAttribute("account");
@@ -56,20 +56,20 @@ public class UpdatePersonalInfo extends HttpServlet {
 			
 			Part part = req.getPart("icon");
 
-//			//Tạo thư mục lưu file nếu chưa tồn tại
-//			String realPath = Constant.DIR + "/avatar";
-//			
-//			if (!Files.exists(Paths.get(realPath))) {
-//				Files.createDirectory(Paths.get(realPath));
-//			}
-//			
-//			//Upload file bằng Multipart
-//			String filename = Paths.get(part.getSubmittedFileName()).getFileName().toString(); 
-//			part.write(realPath + "/" + filename);
+			//Tạo thư mục lưu file nếu chưa tồn tại
+			String realPath = Constant.DIR + "/avatar";
+			
+			if (!Files.exists(Paths.get(realPath))) {
+				Files.createDirectory(Paths.get(realPath));
+			}
+			
+			//Upload file bằng Multipart
+			String filename = Paths.get(part.getSubmittedFileName()).getFileName().toString(); 
+			part.write(realPath + "/" + filename);
 			
 			//Thêm category vào database
 			users.setFullname(fullName);
-//			users.setAvatar("avatar/" + filename);
+			users.setAvatar("avatar/" + filename);
 			users.setEmail(email);
 			users.setPhone(phone);
 			users.setMajor(major);

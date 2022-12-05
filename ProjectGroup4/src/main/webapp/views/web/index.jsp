@@ -90,7 +90,7 @@
 							<div class="col-xs-7">
 								<div class="numbers">
 									<p class="text-center">Trưởng bộ môn&nbsp;</p>
-									5
+									30
 								</div>
 							</div>
 						</div>
@@ -110,7 +110,7 @@
 				<div class="card">
 					<div class="header">
 						<h4 class="title">Bảng thông báo</h4>
-						<p class="category">Các thông báo về đợt đăng ký, quy địng và
+						<p class="category">Các thông báo về đợt đăng ký, quy định và
 							các công văn&nbsp; &nbsp;</p>
 					</div>
 					<div class="content">
@@ -119,13 +119,37 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td>Thông báo đăng ký đề tài tiểu luận chuyên ngành khoá
-										2017</td>
+									<td> <a href="TB_DATK_K18">Thông báo đăng ký đồ án tốt nghiệp khoá 2018</a>
+										</td>
+									<td><span class="badge badge-info">30/11/2022</span></td>
+								</tr>
+								<tr>
+									<td><a href="http://w3schools.com">Đăng ký môn Tiểu luận chuyên ngành khóa 2017</a></td>
+									<td><span class="badge badge-info">03/09/2020</span></td>
+								</tr>
+								<tr>
+									<td><a href="http://w3schools.com">Thông báo đăng ký chuyên ngành</a></td>
 									<td><span class="badge badge-info">12/11/2022</span></td>
 								</tr>
 								<tr>
-									<td>Thông báo đăng ký đồ án tốt nghiệp khoá 2018</td>
-									<td><span class="badge badge-info">20/11/2022</span></td>
+									<td><a href="http://w3schools.com">Đăng ký tiểu luận chuyên ngành khóa 2015</a></td>
+									<td><span class="badge badge-info">08/09/2018</span></td>
+								</tr>
+								<tr>
+									<td><a href="http://w3schools.com">Đăng ký tiểu luận chuyên ngành khóa 14</a></td>
+									<td><span class="badge badge-info">08/09/2018</span></td>
+								</tr>
+								<tr>
+									<td><a href="http://w3schools.com">Đăng ký khóa luận tốt nghiệp khóa 2014 học kỳ 2 năm học 2017 - 2018</a></td>
+									<td><span class="badge badge-info">27/02/2018</span></td>
+								</tr>
+								<tr>
+									<td><a href="http://w3schools.com">Thông báo hủy kết quả và đăng ký lại chuyên ngành khóa 15</a></td>
+									<td><span class="badge badge-info">04/01/2018</span></td>
+								</tr>
+									<tr>
+									<td><a href="http://w3schools.com">Đăng ký chuyên ngành khoá 15</a></td>
+									<td><span class="badge badge-info">02/01/2018</span></td>
 								</tr>
 							</tbody>
 						</table>

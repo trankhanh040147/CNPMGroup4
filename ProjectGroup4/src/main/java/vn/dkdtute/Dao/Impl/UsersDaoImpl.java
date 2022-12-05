@@ -28,7 +28,6 @@ public class UsersDaoImpl implements IUsersDao {
 				users.setAvatar(rs.getString("avatar"));
 				users.setPasswd(rs.getString("passwd"));
 				users.setMajor(rs.getString("major"));
-				;
 				users.setRoleid(rs.getByte("roleid"));
 				return users;
 			}
@@ -82,10 +81,12 @@ public class UsersDaoImpl implements IUsersDao {
 				users.setPasswd(rs.getString("passwd"));
 				users.setMajor(rs.getString("major"));
 				users.setRoleid(rs.getByte("roleid"));
-				if (passwd.trim().equals(users.getPasswd().trim())) {
-					return users;
-				}
+				return users;
+//				if (passwd == users.getPasswd()) {
+//					return users;
+//				}
 			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
