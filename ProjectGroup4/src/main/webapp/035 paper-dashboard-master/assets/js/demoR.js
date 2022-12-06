@@ -129,7 +129,8 @@ demo = {
         // To add the marker to the map, call setMap();
         marker.setMap(map);
     },
-	showNotificationR: function(from, align){
+
+	showNotification: function(from, align){
     	color = 1;
 
     	$.notify({
@@ -142,36 +143,6 @@ demo = {
             placement: {
                 from: from,
                 align: align
-            }
-        });
-	},
-	showNotification: function(from, align, typeColor, msg){
-    	color = Math.floor((Math.random() * 4) + 1);
-
-    	$.notify({
-        	icon: "ti-gift",
-        	message: msg
-
-        },{
-            type: type[typeColor],
-            timer: 4000,
-            placement: {
-                from: from,
-                align: align
-            }
-        });
-	},
-	showNtf: function(typ, msg, icon){
-    	$.notify({
-        	icon: icon,
-        	message: msg
-
-        },{
-            type: type[typ],
-            timer: 1000,
-            placement: {
-                from: 'top',
-                align: 'center'
             }
         });
 	},

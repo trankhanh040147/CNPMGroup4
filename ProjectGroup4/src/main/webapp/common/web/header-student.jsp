@@ -25,11 +25,11 @@
 						<p>Trang chủ</p>
 					</a></li>
 
-				<li><a href="${pageContext.request.contextPath}/project/list">
+				<li><a href="<c:url value="/topic-type"/>">
 						<i class="ti-view-list-alt"></i>
 						<p>Danh sách đề tài</p>
 					</a></li>
-				<li><a href="typography.jsp"> <i class="ti-text"></i>
+				<li><a href="<c:url value="/student/search"/>"> <i class="ti-text"></i>
 						<p>Tìm kiếm</p>
 					</a></li>
 				<li><a href="notifications.jsp"> <i class="ti-bell"></i>

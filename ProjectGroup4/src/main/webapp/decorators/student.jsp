@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ include file="/common/taglib.jsp" %>
 <%@ taglib prefix="dec"
 	uri="http://www.opensymphony.com/sitemesh/decorator"%>
 
@@ -35,8 +36,8 @@
 <!--  Paper Dashboard core CSS    -->
 <link href="${pageContext.request.contextPath}/assets/css/paper-dashboard.css" rel="stylesheet" />
 
-<!--  CSS for Demo Purpose, don't include it in your project     -->
-<link href="${pageContext.request.contextPath}/assets/css/demo.css" rel="stylesheet" />
+<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
+<script src="${pageContext.request.contextPath}/assets/js/demo.js"></script>
 
 
 <!--  Fonts and icons     -->
@@ -50,7 +51,19 @@
 </head>
 
 <body>
- 	<jsp:include page="/common/web/header-student.jsp"></jsp:include>
+	
+	<jsp:include page="/common/web/header-student.jsp"></jsp:include>
+	
+	<!--  Hiển thị alert nếu có -->
+	<c:if test="${alert!=null}">
+		<script type="text/javascript">
+			window.onload = function() {
+				demo.showNtf(${alertType}, "${alert}", "${alertIcon}");
+			};
+		</script>
+	</c:if>
+	<!--  Hiển thị alert nếu có -->
+	
 	<!-- body -->
 	<dec:body />
 	<!-- body -->
@@ -81,11 +94,9 @@
 	<!-- Paper Dashboard Core javascript and methods for Demo purpose -->
 	<script src="${pageContext.request.contextPath}/assets/js/paper-dashboard.js"></script>
 
-	<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-	<script src="${pageContext.request.contextPath}/assets/js/demo.js"></script>
 	
 
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
 		$(document)
 				.ready(
 						function() {
@@ -108,7 +119,7 @@
 											});
 
 						});
-	</script>
+	</script> -->
 
 </body>
 </html>
