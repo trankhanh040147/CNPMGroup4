@@ -113,4 +113,22 @@ public class UsersDaoImpl implements IUsersDao {
 		}
 	}
 
+	@Override
+	public String findName(String Id) {
+		String sql = "Select * From Users where userid=?";
+		try {
+			Connection conn = new ConnectJDBC().getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, Id);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				String Name = rs.getString("fullname");
+				return Name;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }

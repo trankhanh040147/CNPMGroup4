@@ -18,7 +18,7 @@
 
 		<div class="sidebar-wrapper">
 			<div class="logo">
-				<a href="http://www.creative-tim.com" class="simple-text"> Danh
+				<a href="https://github.com/trankhanh040147/CNPMGroup4" class="simple-text"> Danh
 					mục </a>
 			</div>
 			<ul class="nav">

@@ -1,27 +1,72 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglib.jsp"%>
-	
+
+<!-- CSS for avatar  -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/solid.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/svg-with-js.min.css" rel="stylesheet" />
+<!-- CSS for avatar  -->	
+
 <!-- Thông báo các các lỗi dăng nhập sau khi đã submit đăng nhập -->
 <c:if test="${alert!=null}">
 	<h3 class="alert alertdanger">${alert}</h3>
 </c:if>
+
+<c:url value="/student/updInfo" var="editInfo "></c:url>
+<c:url value="/student/updPass" var="editPass "></c:url>
+
 	
 <div class="content">
 	<div class="container-fluid">
 		<div class="row">
+			<form enctype="multipart/form-data" method ="post" role="form" action="${editInfo}}">
 			<div class="col-lg-4 col-md-5">
 				<div class="card card-user">
 					<div class="image">
 						<img src="${pageContext.request.contextPath}/assets/img/background.jpg" alt="..." />
 					</div>
 					<div class="content">
+					
+					<%-- 	<c:if test="${alert !=null}">
+							
+							<div class="alertw3s">
+								<span class="close-alertw3s"
+									onclick="this.parentElement.style.display='none';">&times;</span>
+								<strong>Lỗi!</strong> ${alert}
+							</div>
+
+						</c:if> --%>
+						
 						<div class="author">
-							<img class="avatar border-white"
-								src="${pageContext.request.contextPath}/assets/img/avatar/student.jpg" alt="..." />
+							<!-- Avatar -->
+							<label> <input type="file" accept="image/*" name="icon"
+							onchange="document.querySelector('.profilepic__image').src = window.URL.createObjectURL(this.files[0]);
+							document.querySelector('.avatar-topbar.border-white').src = window.URL.createObjectURL(this.files[0]);"
+								style="display: none; cursor: pointer;"> <a>
+									<div class="profilepic">
+										<c:url value="/image?fname=${account.avatar}" var="imgUrl"></c:url>
+										<img class="profilepic__image" src="${imgUrl}"
+											onerror="this.src='${pageContext.request.contextPath}/assets/img/avatar/student.jpg';this.onerror='';"
+											width="100" height="100" alt="Profibild"
+											style="align-items: center;">
+										<div class="profilepic__content">
+											<span class="profilepic__icon"><i
+												class="fas fa-camera"></i></span> <span class="profilepic__text">Đổi
+												ảnh</span>
+										</div>
+									</div>
+							</a>
+							</label>
+							<!-- Avatar -->
+							<br/>
+							<br/>
+							<hr>
+							<br/>
 							<h4 class="title">
 								${account.fullname}<br /> <a href="#"><small>${account.email}</small></a>
 							</h4>
+							
 						</div>
 						<!-- Đoạn này tiểu sử  -->
 						<!-- <p class="description text-center">
@@ -122,7 +167,7 @@
 						<h4 class="title">Chỉnh sửa thông tin</h4>
 					</div>
 					<div class="content">
-						<form>
+<!-- 						<form enctype="multipart/form-data"> -->
 							<div class="row">
 								<div class="col-md-4">
 									<div class="form-group">
@@ -134,7 +179,7 @@
 								<div class="col-md-3">
 									<div class="form-group">
 										<label>Mã số sinh viên</label> <input type="text"
-											class="form-control border-input" placeholder="20110221"
+											class="form-control border-input" disabled placeholder="20110221"
 											value="${account.userid}" name="userId">
 									</div>
 								</div>
@@ -176,11 +221,14 @@
 									nhật thông tin</button>
 							</div>
 							<div class="clearfix"></div>
-						</form>
-					</div>
+<!-- 							</form>
+ -->					</div>
 				</div>
 			</div>
-
+			
+			</form>
+			
+			<form action="${editPass}" method="post">
 			<div class="col-lg-8 col-md-7">
 				<div class="card">
 					<div class="header">
@@ -218,11 +266,10 @@
 									nhật mật khẩu</button>
 							</div>
 							<div class="clearfix"></div>
-						</form>
 					</div>
 				</div>
 			</div>
-
+			</form>
 		</div>
 	</div>
 </div>

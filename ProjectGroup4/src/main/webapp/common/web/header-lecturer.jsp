@@ -79,7 +79,9 @@
  -->
 								<div class="card-user">
 									<img class="avatar-topbar border-white"
-										src="${pageContext.request.contextPath}/assets/img/avatar/lecturer.jpg"
+										src="${account.avatar}"
+										onerror="this.src='${pageContext.request.contextPath}/assets/img/avatar/lecturer.jpg';this.onerror='';"
+										onclick="location.href='${pageContext.request.contextPath}/lect/info'"
 										alt="..." />
 								</div>
                             </a>

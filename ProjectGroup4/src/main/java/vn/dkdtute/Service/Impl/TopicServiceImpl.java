@@ -5,6 +5,7 @@ import java.util.List;
 import vn.dkdtute.Dao.ITopicDao;
 import vn.dkdtute.Dao.Impl.TopicDaoImpl;
 import vn.dkdtute.Model.Topic;
+import vn.dkdtute.Model.Users;
 import vn.dkdtute.Service.ITopicService;
 
 public class TopicServiceImpl implements ITopicService {
@@ -36,4 +37,23 @@ public class TopicServiceImpl implements ITopicService {
 		return topicDao.countTopicNotPass(topictype, schoolyear);
 	}
 
+	@Override
+	public List<Topic> findAll(int index, int pagesize) {
+		return topicDao.findAll(index, pagesize);
+	}
+
+	@Override
+	public List<Topic> findByStudentInfo(Users student, int index, int pagesize) {
+		return topicDao.findByStudentInfo(student, index, pagesize);
+	}
+	
+	@Override
+	public Topic getTopicByUnique(String topicname, String major, int schoolyear) {
+		return topicDao.getTopicByUnique(topicname, major, schoolyear);
+	}
+
+	@Override
+	public void register(String studentId, String topicname, String major, int schoolyear) {
+		topicDao.register(studentId, topicname, major, schoolyear);
+	}
 }

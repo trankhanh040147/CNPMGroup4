@@ -19,6 +19,9 @@
 
 <link href="${pageContext.request.contextPath}/assets/css/tailwind.output.css" rel="stylesheet"
 	type="text/css" />
+	
+<link href="${pageContext.request.contextPath}/assets/css/myCSS.css" rel="stylesheet"
+	type="text/css" />
 
 <link
 	href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
@@ -33,14 +36,17 @@
 	defer></script>
 <script src="${pageContext.request.contextPath}/assets/js/init-alpine.js"></script>
 
+<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
+	<script src="${pageContext.request.contextPath}/assets/js/demo.js"></script>
+
+
+
 </head>
 <body>
 	<form action="login" method="post">
 	
-		<!-- Thông báo các các lỗi dăng nhập sau khi đã submit đăng nhập -->
-		<c:if test="${alert !=null}">
-			<h3 class="alert alertdanger">${alert}</h3>
-		</c:if>
+		
+		
 		
 		<div
 		class="flex items-center min-h-screen p-6 bg-gray-50 dark:bg-gray-900">
@@ -56,7 +62,19 @@
 						src="${pageContext.request.contextPath}/assets/img/login-office-dark.jpeg" alt="Office" />
 				</div>
 				<div class="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
-					<div class="w-full">
+						<!-- Thông báo các các lỗi dăng nhập sau khi đã submit đăng nhập -->
+						
+						<div class="w-full">
+						<c:if test="${alert !=null}">
+							
+							<div class="alertw3s">
+								<span class="close-alertw3s"
+									onclick="this.parentElement.style.display='none';">&times;</span>
+								<strong>Lỗi!</strong> ${alert}
+							</div>
+
+						</c:if>
+						
 						<h1
 							class="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-200">
 							Đăng nhập</h1>
@@ -115,7 +133,6 @@
 		</div>
 	</div>
 	</form>
-
 
 </body>
 </html>

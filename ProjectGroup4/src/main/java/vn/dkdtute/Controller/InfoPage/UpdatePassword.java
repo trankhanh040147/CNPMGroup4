@@ -1,4 +1,4 @@
-package vn.dkdtute.Controller.Info;
+package vn.dkdtute.Controller.InfoPage;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
