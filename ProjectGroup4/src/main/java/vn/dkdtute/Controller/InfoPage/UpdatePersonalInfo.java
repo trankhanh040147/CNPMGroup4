@@ -54,22 +54,24 @@ public class UpdatePersonalInfo extends HttpServlet {
 			String email = req.getParameter("email");
 			String phone = req.getParameter("phone");
 			
-			Part part = req.getPart("icon");
-
-			//Tạo thư mục lưu file nếu chưa tồn tại
-			String realPath = Constant.DIR + "/avatar";
-			
-			if (!Files.exists(Paths.get(realPath))) {
-				Files.createDirectory(Paths.get(realPath));
+			if(req.getParameter("icon") != null && !req.getParameter("icon").isEmpty()) {
+				Part part = req.getPart("icon");
+				//Tạo thư mục lưu file nếu chưa tồn tại
+				String realPath = Constant.DIR + "/avatar";
+				
+				if (!Files.exists(Paths.get(realPath))) {
+					Files.createDirectory(Paths.get(realPath));
+				}
+				
+				//Upload file bằng Multipart
+				String filename = Paths.get(part.getSubmittedFileName()).getFileName().toString(); 
+				part.write(realPath + "/" + filename);
+				
+				users.setAvatar("avatar/" + filename);
 			}
-			
-			//Upload file bằng Multipart
-			String filename = Paths.get(part.getSubmittedFileName()).getFileName().toString(); 
-			part.write(realPath + "/" + filename);
 			
 			//Thêm category vào database
 			users.setFullname(fullName);
-			users.setAvatar("avatar/" + filename);
 			users.setEmail(email);
 			users.setPhone(phone);
 			users.setMajor(major);

@@ -36,7 +36,7 @@
 									<td>${topic.topicname}</td>
 									<td>${topic.instructorid}</td>
 									<td>${topic.major}</td>
-									<td><a href='<c:url value='/topic-detail?topicid=${topic.topicid}'/>'
+									<td><a href='<c:url value='/topic-detail?topicId=${topic.topicid}'/>'
 										data-toggle="tooltip" data-original-title="Edit user"> Xem
 											chi tiết</a></td>
 									</tr>

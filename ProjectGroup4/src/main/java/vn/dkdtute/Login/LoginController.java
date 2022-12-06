@@ -93,12 +93,11 @@ public class LoginController extends HttpServlet {
 			else if (u.getRoleid() == 2) {
 				resp.sendRedirect(req.getContextPath() + "/lect/home");
 			} else if (u.getRoleid() == 3) {
+//				req.getRequestDispatcher("/views/web/index.jsp").forward(req, resp);
 				resp.sendRedirect(req.getContextPath() + "/student/home");
 			}else {
 				resp.sendRedirect(req.getContextPath() + "/guest/home");
 			}
-		} else {
-			resp.sendRedirect(req.getContextPath() + "/guest/home");
 		}
 	}
 

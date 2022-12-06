@@ -9,10 +9,15 @@
 <!-- CSS for avatar  -->	
 
 <!-- Thông báo các các lỗi dăng nhập sau khi đã submit đăng nhập -->
-<c:if test="${alert!=null}">
-	<h3 class="alert alertdanger">${alert}</h3>
-</c:if>
 
+<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
+	<script src="${pageContext.request.contextPath}/assets/js/demo.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+
+
+<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
+	<script src="${pageContext.request.contextPath}/assets/js/demo.js"></script>
+	
 <c:url value="/student/updInfo" var="editInfo "></c:url>
 <c:url value="/student/updPass" var="editPass "></c:url>
 
@@ -39,6 +44,7 @@
 						</c:if> --%>
 						
 						<div class="author">
+						
 							<!-- Avatar -->
 							<label> <input type="file" accept="image/*" name="icon"
 							onchange="document.querySelector('.profilepic__image').src = window.URL.createObjectURL(this.files[0]);
@@ -59,6 +65,7 @@
 							</a>
 							</label>
 							<!-- Avatar -->
+							
 							<br/>
 							<br/>
 							<hr>
@@ -273,5 +280,7 @@
 		</div>
 	</div>
 </div>
+
+
 
 
