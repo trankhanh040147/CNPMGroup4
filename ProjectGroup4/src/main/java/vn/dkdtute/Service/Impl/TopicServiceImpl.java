@@ -48,12 +48,32 @@ public class TopicServiceImpl implements ITopicService {
 	}
 	
 	@Override
-	public Topic getTopicByUnique(String topicname, String major, int schoolyear) {
-		return topicDao.getTopicByUnique(topicname, major, schoolyear);
+	public Topic getTopicByUnique(String topicname, String major, String topictype, int schoolyear) {
+		return topicDao.getTopicByUnique(topicname, major, topictype, schoolyear);
 	}
 
 	@Override
-	public void register(String studentId, String topicname, String major, int schoolyear) {
-		topicDao.register(studentId, topicname, major, schoolyear);
+	public void register(String studentId, String topicname, String major, String topictype, int schoolyear) {
+		topicDao.register(studentId, topicname, major, topictype, schoolyear);
+	}
+
+	@Override
+	public void insert(Topic topic) {
+		topicDao.insert(topic);
+	}
+
+	@Override
+	public void edit(Topic topic) {
+		topicDao.edit(topic);
+	}
+
+	@Override
+	public void approve(Topic topic) {
+		topicDao.approve(topic);
+	}
+
+	@Override
+	public void refuse(Topic topic) {
+		topicDao.refuse(topic);
 	}
 }

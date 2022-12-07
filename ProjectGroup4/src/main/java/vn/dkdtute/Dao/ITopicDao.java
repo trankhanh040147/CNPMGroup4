@@ -20,9 +20,15 @@ public interface ITopicDao {
 	
 	List<Topic> findByStudentInfo(Users student, int index, int pagesize);
 	
-	Topic getTopicByUnique(String topicname, String major, int schoolyear);
+	Topic getTopicByUnique(String topicname, String major, String topictype, int schoolyear);
 	
-	void register(String studentId, String topicname, String major, int schoolyear);
+	void register(String studentId, String topicname, String major, String topictype, int schoolyear);
 	
-
+	void insert(Topic topic);
+	
+	void edit(Topic topic);
+	
+	void approve(Topic topic);
+	
+	void refuse(Topic topic);
 }

@@ -13,7 +13,7 @@ import vn.dkdtute.Model.Users;
 
 public class TopicDaoImpl extends ConnectJDBC implements ITopicDao {
 
-	//Lấy ra đề tài theo id 
+	// Lấy ra đề tài theo id
 	@Override
 	public Topic get(int topicid) {
 		String sql = "Select * From Topic Where topicid = ?";
@@ -47,7 +47,7 @@ public class TopicDaoImpl extends ConnectJDBC implements ITopicDao {
 		return null;
 	}
 
-	//Trả về danh sách đề tài đã được duyệt theo loại đề tài và niên khóa
+	// Trả về danh sách đề tài đã được duyệt theo loại đề tài và niên khóa
 	@Override
 	public List<Topic> get(String topictype, int schoolyear) {
 		List<Topic> topics = new ArrayList<Topic>();
@@ -83,7 +83,7 @@ public class TopicDaoImpl extends ConnectJDBC implements ITopicDao {
 		return topics;
 	}
 
-	//Trả về danh sách đề tài đã được duyệt trên hệ thống
+	// Trả về danh sách đề tài đã được duyệt trên hệ thống
 	@Override
 	public List<Topic> getAll() {
 		List<Topic> topics = new ArrayList<Topic>();
@@ -117,7 +117,7 @@ public class TopicDaoImpl extends ConnectJDBC implements ITopicDao {
 		return topics;
 	}
 
-	//Trả về tổng số đề tài đã được duyệt theo loại đề tài và niên khóa
+	// Trả về tổng số đề tài đã được duyệt theo loại đề tài và niên khóa
 	@Override
 	public int countTopic(String topictype, int schoolyear) {
 		String sql = "Select count(topicname) as 'Tổng số đề tài được duyệt' From Topic Where topictype = ? AND choolyear = ? AND topicstatus = 1";
@@ -136,7 +136,7 @@ public class TopicDaoImpl extends ConnectJDBC implements ITopicDao {
 		return 0;
 	}
 
-	//Trả về tổng số đề tài không duyệt theo loại đề tài và niên khóa
+	// Trả về tổng số đề tài không duyệt theo loại đề tài và niên khóa
 	@Override
 	public int countTopicNotPass(String topictype, int schoolyear) {
 		String sql = "Select count(topicname) as 'Tổng số đề tài không duyệt' From Topic Where topictype = ? AND choolyear = ? AND topicstatus = 0";
@@ -154,8 +154,8 @@ public class TopicDaoImpl extends ConnectJDBC implements ITopicDao {
 		}
 		return 0;
 	}
-	
-	//Trả về danh sách đề tài được duyệt trên hệ thống (có phân trang)
+
+	// Trả về danh sách đề tài được duyệt trên hệ thống (có phân trang)
 	@Override
 	public List<Topic> findAll(int index, int pagesize) {
 		List<Topic> topics = new ArrayList<Topic>();
@@ -191,7 +191,7 @@ public class TopicDaoImpl extends ConnectJDBC implements ITopicDao {
 		return topics;
 	}
 
-	//Trả về danh sách đề tài được duyệt phù hợp với từng sinh viên (có phân trang)
+	// Trả về danh sách đề tài được duyệt phù hợp với từng sinh viên (có phân trang)
 	@Override
 	public List<Topic> findByStudentInfo(Users student, int index, int pagesize) {
 		List<Topic> topics = new ArrayList<Topic>();
@@ -230,17 +230,18 @@ public class TopicDaoImpl extends ConnectJDBC implements ITopicDao {
 		return topics;
 	}
 
-	//Trả về đề tài theo tên đề tài, chuyên ngành và niên khóa
-	//(Đề tài này đã được duyệt rồi)
+	// Trả về đề tài theo tên đề tài, chuyên ngành và niên khóa
+	// (Đề tài này đã được duyệt rồi)
 	@Override
-	public Topic getTopicByUnique(String topicname, String major, int schoolyear) {
-		String sql = "Select * From Topic Where topicname = ? AND major = ? AND schoolyear = ?";
+	public Topic getTopicByUnique(String topicname, String major, String topictype, int schoolyear) {
+		String sql = "Select * From Topic Where topicname = ? AND major = ? AND topictype = ? AND schoolyear = ?";
 		try {
 			Connection conn = super.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, topicname);
 			ps.setString(2, major);
-			ps.setInt(3, schoolyear);
+			ps.setString(3, topictype);
+			ps.setInt(4, schoolyear);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				Topic topic = new Topic();
@@ -267,15 +268,16 @@ public class TopicDaoImpl extends ConnectJDBC implements ITopicDao {
 		return null;
 	}
 
-	//Sinh viên đăng ký đề tài bằng mã sinh viên thông qua tên đề tài, chuyên ngành và niên khóa của đề tài đã chọn
-	//(Đề tài này đã được duyệt rồi)
+	// Sinh viên đăng ký đề tài bằng mã sinh viên thông qua tên đề tài, chuyên ngành
+	// và niên khóa của đề tài đã chọn
+	// (Đề tài này đã được duyệt rồi)
 	@Override
-	public void register(String studentId, String topicname, String major, int schoolyear) {
-		String sql = "UPDATE Topic set numofstudent = ?, ?=? Where topicname = ? AND major = ? AND schoolyear = ?";
+	public void register(String studentId, String topicname, String major, String topictype, int schoolyear) {
+		String sql = "UPDATE Topic set numofstudent = ?, ?=? Where topicname = ? AND major = ? AND topictype = ? AND schoolyear = ?";
 		try {
 			Connection conn = super.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
-			Topic topic = getTopicByUnique(topicname, major, schoolyear);
+			Topic topic = getTopicByUnique(topicname, major, topictype, schoolyear);
 			if (topic.getNumofstudent() < 2) {
 				if (topic.getNumofstudent() == 0) {
 					ps.setInt(1, 1);
@@ -287,12 +289,78 @@ public class TopicDaoImpl extends ConnectJDBC implements ITopicDao {
 				ps.setString(3, studentId);
 				ps.setString(4, topicname);
 				ps.setString(5, major);
-				ps.setInt(6, schoolyear);
+				ps.setString(6, topictype);
+				ps.setInt(7, schoolyear);
 				ps.executeQuery();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
+	@Override
+	public void insert(Topic topic) {
+		String sql = "INSERT INTO Topic(topicname, topictarget, request, product, numofstudent, major, topictype, "
+				+ "topicstatus, schoolyear, leaderid, memberid, instructorid, criticalid, topicscore)"
+				+ " VALUES (?, ?, ?, ?, 0, ?, ?, DEFAULT, ?, NULL, NULL, ?, NULL, NULL)";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, topic.getTopicname());
+			ps.setString(2, topic.getTopictarget());
+			ps.setString(3, topic.getRequest());
+			ps.setString(4, topic.getProduct());
+			ps.setString(5, topic.getMajor());
+			ps.setString(6, topic.getTopictype());
+			ps.setInt(7, topic.getSchoolyear());
+			ps.setString(8, topic.getInstructorid());
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	@Override
+	public void edit(Topic topic) {
+		String sql = "UPDATE Topic SET topicname = ?, topictarget=?, request=?, product = ? WHERE topicid = ?";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, topic.getTopicname());
+			ps.setString(2, topic.getTopictarget());
+			ps.setString(3, topic.getRequest());
+			ps.setString(4, topic.getProduct());
+			ps.setInt(5, topic.getTopicid());
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void approve(Topic topic) {
+		String sql = "UPDATE Topic SET topicstatus = 1 WHERE topicid = ?";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, topic.getTopicid());
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void refuse(Topic topic) {
+		String sql = "UPDATE Topic SET topicstatus = 0 WHERE topicid = ?";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, topic.getTopicid());
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
