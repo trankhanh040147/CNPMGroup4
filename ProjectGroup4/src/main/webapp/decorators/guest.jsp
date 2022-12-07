@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="dec"
 	uri="http://www.opensymphony.com/sitemesh/decorator"%>
-<%@ include file="/common/taglib.jsp" %>
 
 <!DOCTYPE html>
 <html lang="vi">
@@ -44,32 +43,8 @@
 
 <body>
 
-	<!--  Hiển thị alert nếu có -->
-	<c:if test="${alert!=null}">
-		<script type="text/javascript">
-			window.onload = function() {
-				demo.showNtf(${alertType}, "${alert}", "${alertIcon}");
-			};
-		</script>
-	</c:if>
-	<!--  Hiển thị alert nếu có -->
+	<jsp:include page="/common/web/header-guest.jsp"></jsp:include>
 
-	<!--  Gắn header theo role -->
-	<c:set value="${account.roleid}" var="role"/>
-	
-	<c:choose>
-		<c:when test="${role == 3}">
-			<jsp:include page="/common/web/header-student.jsp"></jsp:include>
-		</c:when>
-		<c:when test="${role == 2}">
-			<jsp:include page="/common/web/header-lecturer.jsp"></jsp:include>
-		</c:when>
-		<c:otherwise>
-			<jsp:include page="/common/web/header-guest.jsp"></jsp:include>
-		</c:otherwise>
-	</c:choose>
-	<!--  Gắn header theo role -->
-	
 	<!-- body -->
 	<dec:body />
 	<!-- body -->
@@ -103,5 +78,29 @@
 <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
 <script src="${pageContext.request.contextPath}/assets/js/demo.js"></script>
 
+<script type="text/javascript">
+	$(document)
+		.ready(
+			function () {
+
+				demo.initChartist();
+
+				$
+					.notify(
+						{
+							icon: 'ti-gift',
+							message: "Chào mừng đến với <b>DKDTUTE</b> - Trang đăng ký đề tài của trường HCMUTE."
+
+						}, {
+						type: 'success',
+						timer: 2000,
+						placement: {
+			                from: 'top',
+			                align: 'center'
+			            }
+					});
+
+			});
+</script>
 
 </html>

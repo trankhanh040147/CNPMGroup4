@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="/common/taglib.jsp"%>
 
 <div class="content">
 	<div class="container-fluid">
@@ -8,111 +7,128 @@
 			<div class="col-md-12">
 				<div class="card">
 					<div class="header">
-						<h4 class="title">Chi tiết đề tài</h4>
-						<p class="category">${topic.topicname}</p>
+						<h4 class="title">Chi tiết</h4>
+						<p class="category">Tiểu luận chuyên ngành k14</p>
 					</div>
 					<div class="content table-responsive table-full-width">
-						<table class="table table-hover">
+						<table class="table table-striped">
 							<thead>
+								<th></th>
 								<th>Chi tiết đề tài</th>
 								<th>Nội dung</th>
 								<th></th>
 							</thead>
 							<tbody>
 								<tr>
+
+									<td>1</td>
 									<td>Tên đề tài</td>
-									<td>${topic.topicname}</td>
+									<td>Máy phát nhạc MP3 trên nền kit nhúng</td>
 									<td></td>
 									<td></td>
 								</tr>
 								<tr>
+									<td>2</td>
 									<td>Mục tiêu</td>
-									<td>${topic.topictarget}</td>
+									<td>Hệ thống nhúng, lập trình</td>
 									<td></td>
 									<td></td>
 								</tr>
 								<tr>
+									<td>3</td>
 									<td>Yêu cầu</td>
-									<td>${topic.request}</td>
+									<td></td>
 									<td></td>
 									<td></td>
 								</tr>
 								<tr>
+									<td>4</td>
 									<td>Sản phẩm</td>
-									<td>${topic.product}</td>
-									<td></td>
-									<td></td>
-								</tr>
-							
-								<tr>
-									<td>Số lượng sinh viên</td>
-									<td>${(topic.leaderid != null ? 1 : 0) + (topic.memberid != null ? 1 : 0)} / 2</td>
+									<td>Tài liệu, chạy thực</td>
 									<td></td>
 									<td></td>
 								</tr>
 								<tr>
+									<td>5</td>
+									<td>Chú thích</td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>6</td>
+									<td>SL sinh viên</td>
+									<td>1/2</td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>7</td>
 									<td>Được phép đăng ký khác chuyên ngành</td>
 									<td>Không</td>
 									<td></td>
 									<td></td>
 								</tr>
 								<tr>
+									<td>8</td>
 									<td>Chuyên ngành</td>
-									<td>${topic.major}</td>
+									<td>Mạng máy tính</td>
 									<td></td>
 									<td></td>
 								</tr>
 								<tr>
+									<td>9</td>
 									<td>Loại đề tài</td>
-									<td>${topic.topictype}</td>
+									<td>Tiểu luận chuyên ngành</td>
 									<td></td>
 									<td></td>
 								</tr>
 								<tr>
+									<td>10</td>
 									<td>Trạng thái</td>
-									<td><c:choose>
-											<c:when test="${topic.topictype}"> Được bảo vệ</c:when>
-											<c:otherwise>Không được bảo vệ</c:otherwise>
-										</c:choose></td>
+									<td>Được bảo vệ</td>
 									<td></td>
 									<td></td>
 								</tr>
 								<tr>
+									<td>11</td>
 									<td>Niên khóa</td>
-									<td>${topic.schoolyear}</td>
+									<td>2014</td>
 									<td></td>
 									<td></td>
 								</tr>
 								<tr>
+									<td>12</td>
 									<td>Trưởng nhóm</td>
-									<td>${topic.leaderid}</td>
+									<td>Trương Phúc Huy</td>
 									<td></td>
 									<td></td>
 								</tr>
 								<tr>
+									<td>13</td>
 									<td>Các Thành viên</td>
-									<td>${topic.memberid}</td>
+									<td></td>
 									<td></td>
 									<td></td>
 								</tr>
 								<tr>
+									<td>14</td>
 									<td>GV hướng dẫn</td>
-									<td>${topic.instructorid }</td>
+									<td>Đinh Công Đoan</td>
 									<td></td>
 									<td></td>
 								</tr>
 								<tr>
+									<td>15</td>
 									<td>GV phản biện</td>
-									<td>${topic.criticalid }</td>
+									<td></td>
 									<td></td>
 									<td></td>
 								</tr>
 								<tr>
+									<td>16</td>
 									<td>Điểm đề tài</td>
-									<td><c:choose>
-											<c:when test="${topic.topicscore != 0}"> ${topic.topicscore }</c:when>
-											<c:otherwise>Chưa có điểm</c:otherwise>
-										</c:choose></td>
+									<td>Chưa có điểm</td>
 									<td></td>
 									<td></td>
 								</tr>
@@ -126,8 +142,6 @@
 </div>
 
 <div class="text-center">
-	<button type="submit" onclick="history.back()"
-			class="btn btn-info btn-fill btn-wd">Quay lại</button>
+	<a href="list_project.html"><button type="submit"
+			class="btn btn-info btn-fill btn-wd">Quay lại</button></a>
 </div>
-
-<br/>

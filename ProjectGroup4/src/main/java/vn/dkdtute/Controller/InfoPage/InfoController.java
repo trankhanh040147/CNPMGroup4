@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import vn.dkdtute.Model.Users;
-import vn.dkdtute.Util.Constant;
 
 /**
  * Servlet implementation class InfoControlelr
@@ -21,8 +20,6 @@ public class InfoController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html; charset=UTF-8");
 		String url = req.getRequestURL().toString(); 
-		
-		Constant.setAlert(req, resp, "info", "Cập nhật thông tin thành công!");
 		
 	    //Trang chủ cho sinh viên
 		if (url.contains("student/info")) {

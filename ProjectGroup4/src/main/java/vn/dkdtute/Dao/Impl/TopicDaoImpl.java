@@ -48,7 +48,7 @@ public class TopicDaoImpl extends ConnectJDBC implements ITopicDao {
 	@Override
 	public List<Topic> get(String topictype, int schoolyear) {
 		List<Topic> topics = new ArrayList<Topic>();
-		String sql = "Select * From Topic Where topictype = ? AND schoolyear = ?";
+		String sql = "Select * From Topic Where topictype = ?, choolyear = ?";
 		try {
 			Connection conn = super.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);

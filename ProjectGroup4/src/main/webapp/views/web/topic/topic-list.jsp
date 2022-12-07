@@ -30,17 +30,7 @@
 										data-toggle="tooltip" data-original-title="Edit user"> Xem
 											chi tiết</a></td>
 								</tr>
-								<c:forEach items="${topicList}" var="topic">
-									<tr>
-									<td>113</td>
-									<td>${topic.topicname}</td>
-									<td>${topic.instructorid}</td>
-									<td>${topic.major}</td>
-									<td><a href='<c:url value='/topic-detail?topicId=${topic.topicid}'/>'
-										data-toggle="tooltip" data-original-title="Edit user"> Xem
-											chi tiết</a></td>
-									</tr>
-								</c:forEach>
+								
 								
 							</tbody>
 						</table>
@@ -52,8 +42,6 @@
 </div>
 
 <div class="text-center">
-	<a href="<c:url value='/topic-type'/>"><button type="submit"
+	<a href="list_topic.html"><button type="submit"
 			class="btn btn-info btn-fill btn-wd">Quay lại</button></a>
 </div>
-
-<br>
