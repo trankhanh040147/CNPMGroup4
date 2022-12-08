@@ -49,14 +49,17 @@ public class TopicDaoImpl extends ConnectJDBC implements ITopicDao {
 
 	// Trả về danh sách đề tài đã được duyệt theo loại đề tài và niên khóa
 	@Override
-	public List<Topic> get(String topictype, int schoolyear) {
+	public List<Topic> get(String topictype, int schoolyear, int index, int pagesize) {
 		List<Topic> topics = new ArrayList<Topic>();
-		String sql = "Select * From Topic Where topictype = ? AND schoolyear = ? AND topicstatus = 1";
+		String sql = "Select * From Topic Where topictype = ? AND schoolyear = ? AND topicstatus = 1 "
+				+ "ORDER BY topicname asc OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
 		try {
 			Connection conn = super.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, topictype);
 			ps.setInt(2, schoolyear);
+			ps.setInt(3, index);
+			ps.setInt(4, pagesize);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				Topic topic = new Topic();
@@ -120,7 +123,7 @@ public class TopicDaoImpl extends ConnectJDBC implements ITopicDao {
 	// Trả về tổng số đề tài đã được duyệt theo loại đề tài và niên khóa
 	@Override
 	public int countTopic(String topictype, int schoolyear) {
-		String sql = "Select count(topicname) as 'Tổng số đề tài được duyệt' From Topic Where topictype = ? AND choolyear = ? AND topicstatus = 1";
+		String sql = "Select count(topicname) as 'Tổng số đề tài được duyệt' From Topic Where topictype = ? AND schoolyear = ? AND topicstatus = 1";
 		try {
 			Connection conn = super.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -139,7 +142,7 @@ public class TopicDaoImpl extends ConnectJDBC implements ITopicDao {
 	// Trả về tổng số đề tài không duyệt theo loại đề tài và niên khóa
 	@Override
 	public int countTopicNotPass(String topictype, int schoolyear) {
-		String sql = "Select count(topicname) as 'Tổng số đề tài không duyệt' From Topic Where topictype = ? AND choolyear = ? AND topicstatus = 0";
+		String sql = "Select count(topicname) as 'Tổng số đề tài không duyệt' From Topic Where topictype = ? AND schoolyear = ? AND topicstatus = 0";
 		try {
 			Connection conn = super.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -291,7 +294,7 @@ public class TopicDaoImpl extends ConnectJDBC implements ITopicDao {
 				ps.setString(5, major);
 				ps.setString(6, topictype);
 				ps.setInt(7, schoolyear);
-				ps.executeQuery();
+				ps.executeUpdate();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -363,4 +366,18 @@ public class TopicDaoImpl extends ConnectJDBC implements ITopicDao {
 			e.printStackTrace();
 		}
 	}
+
+//	//Chức năng xóa đề tài không hợp lệ của admin
+//	@Override
+//	public void delete(Topic topic) {
+//		String sql = "Delete Topic WHERE topicid = ?";
+//		try {
+//			Connection con = super.getConnection();
+//			PreparedStatement ps = con.prepareStatement(sql);
+//			ps.setInt(1, topic.getTopicid());
+//			ps.executeUpdate();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
 }

@@ -54,7 +54,7 @@ public class ListTopicController extends HttpServlet {
 		int topicTypeId = Integer.parseInt(req.getParameter("topicType"));
 		
 		//Lấy dữ liệu từ database
-		List<Topic> topicList = topicService.get(Constant.topicType_name[topicTypeId], Constant.topicType_year[topicTypeId]);
+		List<Topic> topicList = topicService.get(Constant.topicType_name[topicTypeId], Constant.topicType_year[topicTypeId], topicTypeId, topicTypeId);
 				
 		/* Phân trang */
 		

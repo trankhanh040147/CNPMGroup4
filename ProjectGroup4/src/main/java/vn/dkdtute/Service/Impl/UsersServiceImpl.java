@@ -1,11 +1,6 @@
 package vn.dkdtute.Service.Impl;
 
 import java.io.File;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-
-import vn.dkdtute.Connections.ConnectJDBC;
 import vn.dkdtute.Dao.IUsersDao;
 import vn.dkdtute.Dao.Impl.UsersDaoImpl;
 import vn.dkdtute.Service.IUsersService;
@@ -52,6 +47,21 @@ public class UsersServiceImpl implements IUsersService {
 	@Override
 	public String findName(String Id) {
 		return userDao.findName(Id);
+	}
+
+	@Override
+	public void insert(Users user) {
+		userDao.insert(user);
+	}
+
+	@Override
+	public void delete(String userid) {
+		userDao.delete(userid);
+	}
+
+	@Override
+	public void adminEdit(Users user) {
+		userDao.adminEdit(user);
 	}
 
 }

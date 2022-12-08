@@ -18,8 +18,8 @@ public class TopicServiceImpl implements ITopicService {
 	}
 
 	@Override
-	public List<Topic> get(String topictype, int schoolyear) {
-		return topicDao.get(topictype, schoolyear);
+	public List<Topic> get(String topictype, int schoolyear, int index, int pagesize) {
+		return topicDao.get(topictype, schoolyear, index, pagesize);
 	}
 
 	@Override
@@ -76,4 +76,9 @@ public class TopicServiceImpl implements ITopicService {
 	public void refuse(Topic topic) {
 		topicDao.refuse(topic);
 	}
+
+//	@Override
+//	public void delete(Topic topic) {
+//		topicDao.delete(topic);
+//	}
 }

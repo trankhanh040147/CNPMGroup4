@@ -7,8 +7,8 @@ import vn.dkdtute.Model.Users;
 
 public interface ITopicService {
 	Topic get(int topicid);
-
-	List<Topic> get(String topictype, int schoolyear);
+	
+	List<Topic> get(String topictype, int schoolyear, int index, int pagesize);
 
 	List<Topic> getAll();
 
@@ -27,6 +27,8 @@ public interface ITopicService {
 	void insert(Topic topic);
 	
 	void edit(Topic topic);
+	
+//	void delete(Topic topic);
 	
 	void approve(Topic topic);
 	

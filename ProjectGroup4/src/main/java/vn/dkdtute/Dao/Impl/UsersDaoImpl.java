@@ -1,6 +1,5 @@
 package vn.dkdtute.Dao.Impl;
 
-import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,13 +8,13 @@ import vn.dkdtute.Connections.ConnectJDBC;
 import vn.dkdtute.Dao.IUsersDao;
 import vn.dkdtute.Model.Users;
 
-public class UsersDaoImpl implements IUsersDao {
+public class UsersDaoImpl extends ConnectJDBC implements IUsersDao {
 
 	@Override
 	public Users findByID(String userid) {
 		String sql = "Select * From Users where userid=?";
 		try {
-			Connection conn = new ConnectJDBC().getConnection();
+			Connection conn = super.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, userid);
 			ResultSet rs = ps.executeQuery();
@@ -41,7 +40,7 @@ public class UsersDaoImpl implements IUsersDao {
 	public Users findByEmail(String email) {
 		String sql = "Select * From Users where email=?";
 		try {
-			Connection conn = new ConnectJDBC().getConnection();
+			Connection conn = super.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, email);
 			ResultSet rs = ps.executeQuery();
@@ -67,7 +66,7 @@ public class UsersDaoImpl implements IUsersDao {
 	public Users login(String email, String passwd) {
 		String sql = "Select * From Users where email=?";
 		try {
-			Connection conn = new ConnectJDBC().getConnection();
+			Connection conn = super.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, email);
 			ResultSet rs = ps.executeQuery();
@@ -93,21 +92,43 @@ public class UsersDaoImpl implements IUsersDao {
 		return null;
 	}
 
+	// Chức năng thay đổi thông tin tài khoản của giảng viên và sinh viên
 	@Override
 	public void edit(Users newUserInfo) {
-		String sql = "Update Users Set fullname=?, email=?, phone=?, avatar=?, passwd=?, major=?, roleid=? WHERE userid=?";
+		String sql = "Update Users Set fullname=?, email=?, phone=?, avatar=?, passwd=? WHERE userid=?";
 		try {
-			Connection conn = new ConnectJDBC().getConnection();
+			Connection conn = super.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, newUserInfo.getFullname());
 			ps.setString(2, newUserInfo.getEmail());
 			ps.setString(3, newUserInfo.getPhone());
 			ps.setString(4, newUserInfo.getAvatar());
 			ps.setString(5, newUserInfo.getPasswd());
-			ps.setString(6, newUserInfo.getMajor());
-			ps.setByte(7, newUserInfo.getRoleid());
-			ps.setString(8, newUserInfo.getUserid());
-			ps.executeQuery();
+			ps.setString(6, newUserInfo.getUserid());
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	// Chức năng chỉnh sửa thông tin tài khoản user của admin
+	@Override
+	public void adminEdit(Users user) {
+
+		String sql = "Update Users Set fullname=?, email=?, phone=?, avatar=?, passwd=?, major=?, roleid=? Where userid=?,"
+				+ "Where userid=?";
+		try {
+			Connection conn = super.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, user.getFullname());
+			ps.setString(2, user.getEmail());
+			ps.setString(3, user.getPhone());
+			ps.setString(4, user.getAvatar());
+			ps.setString(5, user.getPasswd());
+			ps.setString(6, user.getMajor());
+			ps.setByte(7, user.getRoleid());
+			ps.setString(8, user.getUserid());
+			ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -117,7 +138,7 @@ public class UsersDaoImpl implements IUsersDao {
 	public String findName(String Id) {
 		String sql = "Select * From Users where userid=?";
 		try {
-			Connection conn = new ConnectJDBC().getConnection();
+			Connection conn = super.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, Id);
 			ResultSet rs = ps.executeQuery();
@@ -131,4 +152,37 @@ public class UsersDaoImpl implements IUsersDao {
 		return null;
 	}
 
+	@Override
+	public void insert(Users user) {
+		String sql = "Insert Into Users(userid, fullname, email, phone, avatar, passwd, major, roleid) values "
+				+ "(?,?,?,?,?,?,?,?";
+		try {
+			Connection conn = super.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, user.getUserid());
+			ps.setString(2, user.getFullname());
+			ps.setString(3, user.getEmail());
+			ps.setString(4, user.getPhone());
+			ps.setString(5, user.getAvatar());
+			ps.setString(6, user.getPasswd());
+			ps.setString(7, user.getMajor());
+			ps.setByte(8, user.getRoleid());
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void delete(String userid) {
+		String sql = "Delete * FROM Users WHERE userid = ?";
+		try {
+			Connection conn = super.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, userid);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
