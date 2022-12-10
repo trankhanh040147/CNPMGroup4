@@ -1,5 +1,7 @@
 package vn.dkdtute.Dao;
 
+import java.util.List;
+
 import vn.dkdtute.Model.Users;
 
 public interface IUsersDao {
@@ -18,5 +20,9 @@ public interface IUsersDao {
 	void delete (String userid);
 
 	String findName(String Id);
+	
+	List<Users> findStudent(String infoStudent);
+	
+	List<Users> findLecturer(String infoLecturer);
 
 }

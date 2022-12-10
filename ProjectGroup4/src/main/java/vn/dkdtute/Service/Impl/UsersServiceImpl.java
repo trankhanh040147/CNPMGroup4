@@ -1,6 +1,8 @@
 package vn.dkdtute.Service.Impl;
 
 import java.io.File;
+import java.util.List;
+
 import vn.dkdtute.Dao.IUsersDao;
 import vn.dkdtute.Dao.Impl.UsersDaoImpl;
 import vn.dkdtute.Service.IUsersService;
@@ -62,6 +64,16 @@ public class UsersServiceImpl implements IUsersService {
 	@Override
 	public void adminEdit(Users user) {
 		userDao.adminEdit(user);
+	}
+
+	@Override
+	public List<Users> findStudent(String infoStudent) {
+		return userDao.findStudent(infoStudent);
+	}
+
+	@Override
+	public List<Users> findLecturer(String infoLecturer) {
+		return userDao.findLecturer(infoLecturer);
 	}
 
 }

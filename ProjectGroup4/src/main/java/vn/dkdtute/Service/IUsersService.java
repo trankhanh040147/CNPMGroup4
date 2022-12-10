@@ -1,5 +1,7 @@
 package vn.dkdtute.Service;
 
+import java.util.List;
+
 import vn.dkdtute.Model.Users;
 
 public interface IUsersService {
@@ -18,4 +20,8 @@ public interface IUsersService {
 	void delete (String userid);
 
 	String findName(String Id);
+	
+	List<Users> findStudent(String infoStudent);
+	
+	List<Users> findLecturer(String infoLecturer);
 }

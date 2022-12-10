@@ -3,9 +3,12 @@ package vn.dkdtute.Dao.Impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import vn.dkdtute.Connections.ConnectJDBC;
 import vn.dkdtute.Dao.IUsersDao;
+import vn.dkdtute.Model.Topic;
 import vn.dkdtute.Model.Users;
 
 public class UsersDaoImpl extends ConnectJDBC implements IUsersDao {
@@ -155,7 +158,7 @@ public class UsersDaoImpl extends ConnectJDBC implements IUsersDao {
 	@Override
 	public void insert(Users user) {
 		String sql = "Insert Into Users(userid, fullname, email, phone, avatar, passwd, major, roleid) values "
-				+ "(?,?,?,?,?,?,?,?";
+				+ "(?,?,?,?,?,?,?,?)";
 		try {
 			Connection conn = super.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -185,4 +188,75 @@ public class UsersDaoImpl extends ConnectJDBC implements IUsersDao {
 			e.printStackTrace();
 		}
 	}
+
+	@Override
+	public List<Users> findStudent(String infoStudent) {
+		List<Users> users = new ArrayList<Users>();
+		String sql = "Select * from Users where roleid = 3  and "
+				+ "(userid like ('%'+?+'%') or fullname like ('%'+?+'%') or "
+				+ "email like ('%'+?+'%') or  phone like ('%'+?+'%') or major like ('%'+?+'%'))";
+		try {
+			Connection conn = super.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, infoStudent);
+			ps.setString(2, infoStudent);
+			ps.setString(3, infoStudent);
+			ps.setString(4, infoStudent);
+			ps.setString(5, infoStudent);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Users user = new Users();
+				user.setUserid(rs.getString("userid"));
+				user.setFullname(rs.getString("fullname"));
+				user.setEmail(rs.getString("email"));
+				user.setPhone(rs.getString("phone"));
+				user.setAvatar(rs.getString("avatar"));
+				user.setPasswd(rs.getString("passwd"));
+				user.setMajor(rs.getString("major"));
+				user.setRoleid(rs.getByte("roleid"));
+				users.add(user);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return users;
+	}
+
+	@Override
+	public List<Users> findLecturer(String infoLecturer) {
+		List<Users> users = new ArrayList<Users>();
+		String sql = "Select * from Users where (roleid = 1 or roleid = 2)  and "
+				+ "(userid like ('%'+?+'%') or fullname like ('%'+?+'%') or "
+				+ "email like ('%'+?+'%') or  phone like ('%'+?+'%') or major like ('%'+?+'%'))";
+		try {
+			Connection conn = super.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, infoLecturer);
+			ps.setString(2, infoLecturer);
+			ps.setString(3, infoLecturer);
+			ps.setString(4, infoLecturer);
+			ps.setString(5, infoLecturer);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Users user = new Users();
+				user.setUserid(rs.getString("userid"));
+				user.setFullname(rs.getString("fullname"));
+				user.setEmail(rs.getString("email"));
+				user.setPhone(rs.getString("phone"));
+				user.setAvatar(rs.getString("avatar"));
+				user.setPasswd(rs.getString("passwd"));
+				user.setMajor(rs.getString("major"));
+				user.setRoleid(rs.getByte("roleid"));
+				users.add(user);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return users;
+	}
+
+	public String submitTopic(String link) {
+		return link;
+	}
+
 }

@@ -58,12 +58,12 @@ GO
 CREATE TABLE [dbo].[Users]
 (
     userid varchar(10) primary key, --sv: mssv, gv: msgv
-	fullname nvarchar(32),
+	fullname nvarchar(32) not null,
 	email varchar(256) unique,
 	phone varchar(11) unique,
 	avatar varchar(218),
 	passwd varchar(15) not null,
-	major nvarchar(32),
+	major nvarchar(32) not null,
 	roleid TINYINT NOT NULL, --   1: Trưởng bộ môn ; 2: Giảng viên ; 3: Sinh viên ; 4: Admin
 	CONSTRAINT checkEmail CHECK (email LIKE '[a-z,0-9,_,-]%@[a-z]%.[a-z][a-z]%'),
 	CONSTRAINT checkPhone CHECK (phone NOT LIKE '%[^0-9]%'),
@@ -231,6 +231,60 @@ insert into dbo.Topic values(N'Xây dựng website hỗ trợ học tiếng Hind
 insert into dbo.Topic values(N'Xây dựng website hỗ trợ học tiếng Thái', N'Xây dựng website hỗ trợ học tiếng Thái', N'Nhóm, Đọc hiểu tiếng Anh', N'web', 1, N'Hệ thống thông tin', N'Đề tài tốt nghiệp', 1, 2019, NULL, NULL, 'SPK00054', NULL, NULL)
 
 GO
+
+-- Create a new table called '[RegistrationPeriod]' in schema '[dbo]'
+
+-- Drop the table if it already exists
+
+IF OBJECT_ID('[dbo].[SubmitTopic]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SubmitTopic];
+
+GO
+
+-- Create the table in the specified schema
+
+CREATE TABLE [dbo].[SubmitTopic]
+(
+    topicid int references dbo.Topic(topicid), 
+	userid varchar(10) references dbo.Users(userid),
+	link varchar(256) unique not null,
+	Constraint PK_SubmitTopic primary key (topicid , userid)
+);
+
+GO
+
+-- Create a new table called '[RegistrationPeriod]' in schema '[dbo]'
+
+-- Drop the table if it already exists
+
+IF OBJECT_ID('[dbo].[RegistrationPeriod]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[RegistrationPeriod];
+
+GO
+
+-- Create the table in the specified schema
+
+CREATE TABLE [dbo].[RegistrationPeriod]
+(
+    id int identity(1,1) primary key,   
+	objectreg TINYINT NOT NULL, --  1: Giảng viên ; 2: Sinh viên
+	schoolyear int not null,
+	regtype TINYINT NOT NULL, -- 1: Tiểu luận chuyên ngành; 2: Đề tài tốt nghiệp
+	datefrom date not null,
+	datefinal date,
+	Constraint UC_RegistrationPeriod UNIQUE (objectreg, schoolyear, regtype)
+);
+
+GO
+
+insert into dbo.RegistrationPeriod values(1, 2018, 1, '2021-07-08', '2022-08-15')
+insert into dbo.RegistrationPeriod values(2, 2018, 1, '2021-08-28', '2022-09-15')
+insert into dbo.RegistrationPeriod values(1, 2018, 2, '2021-02-09', '2022-03-14')
+insert into dbo.RegistrationPeriod values(2, 2018, 2, '2021-03-25', '2022-04-25')
+insert into dbo.RegistrationPeriod values(1, 2019, 1, '2022-07-06', '2022-08-16')
+insert into dbo.RegistrationPeriod values(2, 2019, 1, '2022-08-29', '2022-09-20')
+
+GO
 -- Create a new table called '[CounterCommittee' in schema '[dbo]'
 
 -- Drop the table if it already exists
@@ -257,33 +311,7 @@ insert into dbo.CounterCommittee values('HDPB_CNPM_TLCN_2122_002', NULL, NULL, 5
 insert into dbo.CounterCommittee values('HDPB_HTTT_TLCN_2122_001', NULL, NULL, 6)
 
 GO
--- Create a new table called '[RegistrationPeriod]' in schema '[dbo]'
 
--- Drop the table if it already exists
-
-IF OBJECT_ID('[dbo].[RegistrationPeriod]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[RegistrationPeriod];
-
-GO
-
--- Create the table in the specified schema
-
-CREATE TABLE [dbo].[RegistrationPeriod]
-(
-    id varchar(25) primary key,
-	objectreg TINYINT NOT NULL, --  1: Giảng viên ; 2: Sinh viên 
-	datefrom date not null,
-	datefinal date
-);
-
-GO
-
-insert into dbo.RegistrationPeriod values('DK_TLCN_2122_D1', 1, '2021-08-07', '2022-02-07')
-insert into dbo.RegistrationPeriod values('DK_TLCN_2122_D2', 2, '2022-02-10', NULL)
-insert into dbo.RegistrationPeriod values('DK_KLTN_2122_D1', 1, '2021-06-15', '2022-03-12')
-insert into dbo.RegistrationPeriod values('DK_KLTN_2122_D2', 2, '2022-01-21', NULL)
-
-GO
 
 -- Create a new table called '[StudentGroup]' in schema '[dbo]'
 
@@ -300,7 +328,7 @@ CREATE TABLE [dbo].[StudentGroup]
 (
     groupid varchar(25) primary key, 
 	leaderid varchar(10) references dbo.Users(userid),
-	topicid varchar(25) references dbo.Topic(topicid),
+	topicid int references dbo.Topic(topicid),
 	amount int not null,
 );
 
