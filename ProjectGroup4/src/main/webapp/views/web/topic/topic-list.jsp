@@ -78,11 +78,3 @@
 			class="btn btn-info btn-fill btn-wd">Quay lại</button></a>
 </div> --%>
 
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>

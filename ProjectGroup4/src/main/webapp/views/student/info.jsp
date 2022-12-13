@@ -28,15 +28,6 @@
 					</div>
 					<div class="content">
 					
-					<%-- 	<c:if test="${alert !=null}">
-							
-							<div class="alertw3s">
-								<span class="close-alertw3s"
-									onclick="this.parentElement.style.display='none';">&times;</span>
-								<strong>Lỗi!</strong> ${alert}
-							</div>
-
-						</c:if> --%>
 						
 						<div class="author">
 						
@@ -188,7 +179,7 @@
 								<div class="col-md-4">
 									<div class="form-group">
 										<label for="exampleInputEmail1">Chuyên ngành</label> <input
-											type="text" list="majors" class="form-control border-input"
+											type="text" list="majors" class="form-control border-input" disabled
 											placeholder="Chuyên ngành" value="${account.major}" name="major"/>
 										<datalist id="majors">
 											<option>Công Nghệ Phần Mềm</option>

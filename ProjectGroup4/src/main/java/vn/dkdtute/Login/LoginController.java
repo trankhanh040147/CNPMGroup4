@@ -115,8 +115,8 @@ public class LoginController extends HttpServlet {
 		// Thông báo lỗi nếu username hoặc password để trống
 
 		if (username.isEmpty() || password.isEmpty()) {
-			alertMsg = "Tài khoản hoặc mật khẩu không được rỗng";
-			req.setAttribute("alert", alertMsg);
+			Constant.setAlert(req, resp, "error", "Tài khoản hoặc mật khẩu không được rỗng");
+//			req.setAttribute("alert", alertMsg);
 			req.getRequestDispatcher("/views/web/login-page.jsp").forward(req, resp);
 			return;
 		}
@@ -141,9 +141,7 @@ public class LoginController extends HttpServlet {
 			resp.sendRedirect(req.getContextPath() + "/login/waiting");
 		} else {
 			// Tài khoản hoặc mật khẩu không đúng --> báo lỗi sai tài khoản - mật khẩu
-			alertMsg = "Tài khoản hoặc mật khẩu không đúng:" 
-//			+username + "-" +password +"<br>" 
-			+ accountInfo.getEmail() + "-" +accountInfo.getPasswd();
+			alertMsg = "Tài khoản hoặc mật khẩu không đúng!";
 			req.setAttribute("alert", alertMsg);
 			req.getRequestDispatcher("/views/web/login-page.jsp").forward(req, resp);
 		}

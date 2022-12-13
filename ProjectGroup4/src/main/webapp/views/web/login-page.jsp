@@ -36,18 +36,30 @@
 	defer></script>
 <script src="${pageContext.request.contextPath}/assets/js/init-alpine.js"></script>
 
+
+<!--  JS-->
+<!--   Core JS Files   -->
+<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+
 <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-	<script src="${pageContext.request.contextPath}/assets/js/demo.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/demo.js"></script>
 
 
 
 </head>
 <body>
 	<form action="login" method="post">
-	
-		
-		
-		
+
+		<!--  Hiển thị alert nếu có -->
+		<c:if test="${alert!=null}">
+			<script type="text/javascript">
+			window.onload = function() {
+				demo.showNtf(${alertType}, "${alert}", "${alertIcon}");
+			};
+		</script>
+		</c:if>
+
+
 		<div
 		class="flex items-center min-h-screen p-6 bg-gray-50 dark:bg-gray-900">
 		<div

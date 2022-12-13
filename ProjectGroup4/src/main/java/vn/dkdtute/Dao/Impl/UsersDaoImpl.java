@@ -83,10 +83,9 @@ public class UsersDaoImpl extends ConnectJDBC implements IUsersDao {
 				users.setPasswd(rs.getString("passwd"));
 				users.setMajor(rs.getString("major"));
 				users.setRoleid(rs.getByte("roleid"));
-				return users;
-//				if (passwd == users.getPasswd()) {
-//					return users;
-//				}
+				if (passwd == users.getPasswd()) {
+					return users;
+				}
 			}
 
 		} catch (Exception e) {

@@ -2,8 +2,6 @@ package vn.dkdtute.Controller;
 
 import java.io.IOException;
 
-import javax.lang.model.element.ModuleElement.UsesDirective;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +16,7 @@ import vn.dkdtute.Util.Constant;
  * Servlet implementation class HomeController
  */
 @WebServlet(urlPatterns = {"/home"})
-public class HomeController extends HttpServlet {
+public class HomeController extends HttpServlet {	
 	private static final long serialVersionUID = 1L;
    
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

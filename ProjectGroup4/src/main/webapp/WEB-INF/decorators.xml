@@ -17,7 +17,7 @@
 	<decorator name="head-lecturer" page="head-lecturer.jsp">
 		<pattern>/head-lect*</pattern>
 	</decorator> -->
-	<decorator name="web" page="guest.jsp">
+	<decorator name="web" page="web.jsp">
 		<pattern>/*</pattern>
 	</decorator>
 </decorators>

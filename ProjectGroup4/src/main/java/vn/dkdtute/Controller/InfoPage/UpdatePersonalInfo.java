@@ -77,13 +77,15 @@ public class UpdatePersonalInfo extends HttpServlet {
 			users.setPhone(phone);
 			usersService.edit(users);
 			
+			Constant.setAlert(req, resp, "success", "Cập nhật thông tin thành công!");
 			//Chuyển tới trang info
 			if (users.getRoleid() == 3) {
 				Constant.setAlert(req, resp, "success", "Cập nhật thông tin thành công!");
-				resp.sendRedirect(req.getContextPath() + "/student/info");
+				req.getRequestDispatcher("/views/student/info.jsp").forward(req, resp);
+//				resp.sendRedirect(req.getContextPath() + "/student/info");
 			} else if(users.getRoleid() == 2) {
 				Constant.setAlert(req, resp, "success", "Cập nhật thông tin thành công!");
-				resp.sendRedirect(req.getContextPath() + "/lect/info");
+				req.getRequestDispatcher("/views/lect/info.jsp").forward(req, resp);
 			}
 		} 
 		catch (Exception e) {

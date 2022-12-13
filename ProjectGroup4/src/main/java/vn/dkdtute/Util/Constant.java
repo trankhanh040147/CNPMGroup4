@@ -18,7 +18,7 @@ public class Constant {
 	public static final String DIR = "D:\\upload\\img\\DKDTUTE";
 
 	
-	public static final String[] topicType_name = {"Tiểu luận chuyên ngành","Khóa luận tốt nghiệp","Tiểu luận chuyên ngành","Khóa luận tốt nghiệp"};
+	public static final String[] topicType_name = {"Tiểu luận chuyên ngành","Đề tài tốt nghiệp","Tiểu luận chuyên ngành","Đề tài tốt nghiệp"};
 	public static final Integer[] topicType_year = {2018, 2018, 2019, 2019};
 
 	public static void setAlert(HttpServletRequest req, HttpServletResponse resp, String alertType, String cmt) {

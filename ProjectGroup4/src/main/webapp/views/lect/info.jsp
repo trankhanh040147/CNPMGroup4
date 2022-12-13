@@ -2,11 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglib.jsp" %>
 
-<!-- Thông báo các các lỗi dăng nhập sau khi đã submit đăng nhập -->
-<c:if test="${alert!=null}">
-	<h3 class="alert alertdanger">${alert}</h3>
-</c:if>
-
 <c:url value="/lect/updInfo" var="editInfo"></c:url>
 <c:url value="/lect/updPass" var="editPass"></c:url>
 
