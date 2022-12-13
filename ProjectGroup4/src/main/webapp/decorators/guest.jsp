@@ -100,6 +100,9 @@
 		<c:when test="${role == 2}">
 			<jsp:include page="/common/web/header-lecturer.jsp"></jsp:include>
 		</c:when>
+		<c:when test="${role == 1}">
+			<jsp:include page="/common/web/header-admin.jsp"></jsp:include>
+		</c:when>
 		<c:otherwise>
 			<jsp:include page="/common/web/header-guest.jsp"></jsp:include>
 		</c:otherwise>

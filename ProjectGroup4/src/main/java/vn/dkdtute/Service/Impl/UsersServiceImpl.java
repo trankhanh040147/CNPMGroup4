@@ -87,4 +87,14 @@ public class UsersServiceImpl implements IUsersService {
 		return userDao.CountLectByKeyword(keyword);
 	}
 
+	@Override
+	public int countAll() {
+		return userDao.countAll();
+	}
+
+	@Override
+	public List<Users> findAll(int index, int pagesize) {
+		return userDao.findAll(index, pagesize);
+	}
+
 }

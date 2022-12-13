@@ -29,4 +29,8 @@ public interface IUsersDao {
 
 	int CountLectByKeyword(String keyword);
 
+	int countAll();
+
+	List<Users> findAll(int index, int pagesize);
+
 }

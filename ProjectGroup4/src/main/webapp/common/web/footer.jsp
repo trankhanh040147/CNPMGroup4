@@ -21,6 +21,7 @@
 				</nav>
 				<div class="copyright pull-right">
 					&copy;
+					Trần Phúc Khánh - Ngô Thừa Ân - Lê Văn Anh Đức
 					<script>
 						document.write(new Date().getFullYear())
 					</script>

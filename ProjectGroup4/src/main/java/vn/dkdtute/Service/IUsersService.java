@@ -28,4 +28,8 @@ public interface IUsersService {
 	int CountStudentByKeyword(String keyword);
 
 	int CountLectByKeyword(String keyword);
+
+	int countAll();
+
+	List<Users> findAll(int i, int itemsPerPage);
 }

@@ -39,7 +39,7 @@
 										<td>${user.major}</td>
 										<td>${user.phone}</td>
 										<td><a
-											href='<c:url value='/user-detail?userId=${user.userid}'/>'
+											href='<c:url value='/userDetail?userid=${user.userid}'/>'
 											data-toggle="tooltip" data-original-title="Edit user">
 												Xem chi tiết</a></td>
 									</tr>

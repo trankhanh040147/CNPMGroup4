@@ -70,13 +70,13 @@
 				class="sr-only">Next</span>
 				
 		</a></li>
-		
-	</ul>
-</nav>
 
-<%-- <div class="text-center">
-	<a href="<c:url value='/topic-type'/>"><button type="submit"
-			class="btn btn-info btn-fill btn-wd">Quay lại</button></a>
-</div> --%>
+	</ul>
+	<hr/>
+		<div class="text-center">
+			<a href="<c:url value='/NewTopic/add'/>"><button type="submit"
+					class="btn btn-info btn-fill btn-wd">Thêm đề tài mới</button></a>
+		</div>
+</nav>
 
 <br>

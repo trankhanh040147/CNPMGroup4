@@ -25,9 +25,7 @@ public class LogoutController extends HttpServlet {
 		Cookie[] theCookie = req.getCookies();
 		for (Cookie cookie : theCookie) {
 			if(cookie.getName().equals("username")) {
-				System.out.println("Đăng xuất "+cookie.getValue());
 				cookie.setValue("");
-				System.out.println("Đăng xuất "+cookie.getValue());
 				cookie.setMaxAge(0);
 				resp.addCookie(cookie);
 			}

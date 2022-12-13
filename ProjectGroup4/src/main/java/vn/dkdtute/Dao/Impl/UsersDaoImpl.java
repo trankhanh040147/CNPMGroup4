@@ -313,4 +313,48 @@ public class UsersDaoImpl extends ConnectJDBC implements IUsersDao {
 		return 0;
 	}
 
+	@Override
+	public int countAll() {
+		String sql = "Select count(*) as 'totaluser' From Users";
+		try {
+			Connection conn = super.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				return rs.getInt("totaluser");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	@Override
+	public List<Users> findAll(int index, int pagesize) {
+		List<Users> users = new ArrayList<Users>();
+		String sql = "Select * from Users ORDER BY fullname asc OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
+		try {
+			Connection conn = super.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, index);
+			ps.setInt(2, pagesize);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Users user = new Users();
+				user.setUserid(rs.getString("userid"));
+				user.setFullname(rs.getString("fullname"));
+				user.setEmail(rs.getString("email"));
+				user.setPhone(rs.getString("phone"));
+				user.setAvatar(rs.getString("avatar"));
+				user.setPasswd(rs.getString("passwd"));
+				user.setMajor(rs.getString("major"));
+				user.setRoleid(rs.getByte("roleid"));
+				users.add(user);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return users;
+	}
+
 }

@@ -1,5 +1,7 @@
 package vn.dkdtute;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import vn.dkdtute.Dao.ITopicDao;
@@ -13,9 +15,9 @@ import vn.dkdtute.Util.Constant;
 public class TestFile {
 
 	public static void main(String[] args) {
-		IUsersService usersService = new UsersServiceImpl();
-		
-		System.out.println(usersService.findLecturer("t",0,99));
+		Path currentRelativePath = Paths.get("");
+		String s = currentRelativePath.toAbsolutePath().toString();
+		System.out.println("Current absolute path is: " + Constant.DIR);
 	}
 
 }

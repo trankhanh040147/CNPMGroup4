@@ -58,12 +58,17 @@
 				class="btn btn-info btn-fill btn-wd">Tìm kiếm</button>
 	</div>
 </form>
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
+<br/>
+<br/>
+<br/>
+<br/><br/>
+<br/>
+<br/>
+<br/><br/>
+<br/>
+<br/>
+<br/><br/>
+<br/>
+<br/>
+<br/>
+<br/>
