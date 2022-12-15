@@ -306,11 +306,11 @@ CREATE TABLE [dbo].[CounterCommittee]
 
 GO
 
-insert into dbo.CounterCommittee values('HDPB_CNPM_TLCN_2122_001', NULL, NULL, 5)
-insert into dbo.CounterCommittee values('HDPB_CNPM_TLCN_2122_002', NULL, NULL, 5)
-insert into dbo.CounterCommittee values('HDPB_HTTT_TLCN_2122_001', NULL, NULL, 6)
+--insert into dbo.CounterCommittee values('HDPB_CNPM_TLCN_2122_001', NULL, NULL, 5)
+--insert into dbo.CounterCommittee values('HDPB_CNPM_TLCN_2122_002', NULL, NULL, 5)
+--insert into dbo.CounterCommittee values('HDPB_HTTT_TLCN_2122_001', NULL, NULL, 6)
 
-GO
+--GO
 
 
 -- Create a new table called '[StudentGroup]' in schema '[dbo]'
@@ -334,10 +334,10 @@ CREATE TABLE [dbo].[StudentGroup]
 
 GO
 
-insert into dbo.StudentGroup values('NH_CNPM_TLCN_2122_009', '20110279', NULL, 2)
-insert into dbo.StudentGroup values('NH_HTTT_TLCN_2122_015', '20110123', NULL, 1)
+--insert into dbo.StudentGroup values('NH_CNPM_TLCN_2122_009', '20110279', NULL, 2)
+--insert into dbo.StudentGroup values('NH_HTTT_TLCN_2122_015', '20110123', NULL, 1)
 
-GO
+--GO
 
 -- Create a new table called '[ThanhVienNhom]' in schema '[dbo]'
 
@@ -359,8 +359,8 @@ CREATE TABLE [dbo].[GroupMember]
 
 GO
 
-insert into dbo.GroupMember values('NH_CNPM_TLCN_2122_009', '20110279')
-insert into dbo.GroupMember values('NH_CNPM_TLCN_2122_009', '20110089')
-insert into dbo.GroupMember values('NH_HTTT_TLCN_2122_015', '20110123')
+--insert into dbo.GroupMember values('NH_CNPM_TLCN_2122_009', '20110279')
+--insert into dbo.GroupMember values('NH_CNPM_TLCN_2122_009', '20110089')
+--insert into dbo.GroupMember values('NH_HTTT_TLCN_2122_015', '20110123')
 
-GO
+--GO
